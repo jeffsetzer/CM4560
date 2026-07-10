@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CM 4560: Construction Project Management | Week 3 · Class 6 — Estimating, Cost Planning and Scope Alignment | INSTRUCTOR</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --navy:#1a2744;--navy2:#243260;--gold:#c9a84c;--gold2:#f0d080;--goldbg:#fdf6e3;
+  --inst:#7b2d00;--instbg:#fff4ee;--instbdr:#e07040;
+  --green:#1a6e3c;--greenbg:#eaf7ee;--red:#8b1a1a;--redbg:#fdf0f0;
+  --blue:#1a4080;--bluebg:#eef3fc;
+  --text:#1a1a2e;--muted:#5a6080;--border:#d8dce8;--white:#fff;--surface:#f7f8fc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);font-size:15px;line-height:1.65;}
+.inst-banner{background:var(--inst);color:#fff;text-align:center;padding:8px 20px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:static;z-index:200;}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#2a3870 100%);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hero::before{content:"§ EST/CP";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:104px;font-weight:700;color:rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;pointer-events:none;white-space:nowrap;}
+.hero-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;}
+.pill.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.hero h1{font-size:30px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+.hero h1 span{color:var(--gold2);}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);max-width:640px;}
+.hero-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap;}
+.hero-stat label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:2px;}
+.hero-stat value{font-size:16px;font-weight:600;color:var(--gold2);font-family:'JetBrains Mono',monospace;}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.pw{max-width:1100px;margin:0 auto;padding:36px 32px 64px;}
+.inote{background:var(--instbg);border-left:4px solid var(--instbdr);border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:13.5px;}
+.inote .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--inst);margin-bottom:6px;}
+h2{font-size:22px;font-weight:700;color:var(--navy);margin:36px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+h3{font-size:16px;font-weight:600;color:var(--navy);margin:24px 0 10px;}
+h4{font-size:14px;font-weight:600;color:var(--blue);margin:16px 0 8px;}
+p{margin-bottom:12px;}ul,ol{padding-left:22px;margin-bottom:14px;}li{margin-bottom:6px;}
+.ref{display:inline-block;background:var(--navy);color:var(--gold2);font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;vertical-align:middle;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:16px 0;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:16px 0;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;table-layout:fixed;}
+th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:.04em;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;word-wrap:break-word;}
+tr:nth-child(even) td{background:var(--surface);}tr:hover td{background:var(--goldbg);}
+.ot{overflow-x:auto;}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;}
+.c5{background:#fff3cd;color:#7b4f00;border:1px solid #e6c87a;}
+.c4{background:#d1ecf1;color:#0c5460;border:1px solid #7bd0de;}
+.c3{background:#d4edda;color:#155724;border:1px solid #7bc98e;}
+.c2{background:#e2d9f3;color:#432874;border:1px solid #a48cd4;}
+.c1{background:#cce5ff;color:#004085;border:1px solid #7ab4e8;}
+.dcost{background:#cce5ff;color:#004085;border:1px solid #7ab4e8;}
+.gcost{background:#f8d7da;color:#721c24;border:1px solid #e08088;}
+.ohp{background:#e2d9f3;color:#432874;border:1px solid #a48cd4;}
+.contg{background:#fde0cf;color:#7c3a00;border:1px solid #e09070;}
+.allow{background:#fff3cd;color:#7b4f00;border:1px solid #e6c87a;}
+.callout{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:14px;}
+.cg{background:var(--goldbg);border-left:4px solid var(--gold);}
+.cgr{background:var(--greenbg);border-left:4px solid #2ecc71;}
+.cr{background:var(--redbg);border-left:4px solid #c0392b;}
+.cb{background:var(--bluebg);border-left:4px solid #3498db;}
+.callout strong{display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+.actbox{background:var(--navy);color:#fff;border-radius:10px;padding:24px 28px;margin:24px 0;}
+.actbox h3{color:var(--gold2);margin-top:0;}
+.actmeta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.amitem{font-size:12px;color:rgba(255,255,255,.6);}
+.amitem span{color:var(--gold2);font-weight:600;}
+.qq{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin:14px 0;}
+.qnum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.qtext{font-weight:600;margin-bottom:12px;font-size:15px;}
+.ans{background:var(--greenbg);border-left:3px solid var(--green);padding:10px 14px;margin-top:10px;border-radius:0 6px 6px 0;font-size:13px;}
+.ans strong{color:var(--green);}
+.dw{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin:20px 0;overflow-x:auto;}
+.dw svg{max-width:100%;display:block;margin:0 auto;}
+.hwp{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 22px;margin:16px 0;}
+.hwnum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.tl{position:relative;padding-left:32px;border-left:2px solid var(--gold);margin:20px 0;}
+.tli{position:relative;padding:10px 0 10px 16px;}
+.tli::before{content:'';position:absolute;left:-36px;top:16px;width:10px;height:10px;background:var(--gold);border-radius:50%;}
+.ttime{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--gold);display:block;margin-bottom:2px;}
+.ttitle{font-weight:600;font-size:14px;color:var(--navy);}
+.tdesc{font-size:13px;color:var(--muted);}
+.objlist{list-style:none;padding:0;}
+.objitem{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.objitem:last-child{border-bottom:none;}
+.objnum{background:var(--gold);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chki{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.chki:last-child{border-bottom:none;}
+.chkb{width:18px;height:18px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:2px;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:20px;font-size:12px;margin-top:60px;}
+a{color:var(--blue);}
+/* Canonical site nav */
+.site-nav{background:var(--navy);position:sticky;top:0;z-index:150;border-bottom:2px solid var(--gold);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.625rem 1.5rem;gap:1rem;}
+.nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+.nav-logo-mark{width:34px;height:34px;border-radius:6px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;flex-shrink:0;}
+.nav-course{font-size:13px;font-weight:500;color:#fff;line-height:1.3}
+.nav-course span{font-size:11px;font-weight:400;color:rgba(255,255,255,.5);display:block}
+/* Canonical section tabs (pill tab bar) */
+.section-tabs{display:flex;gap:3px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:4px;margin:0 0 2rem;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.04);position:sticky;top:0;z-index:100;}
+.stab{flex:1 1 auto;min-width:100px;padding:8px 12px;border-radius:6px;font-size:12px;font-weight:500;text-align:center;color:var(--muted);cursor:pointer;border:none;background:none;transition:all .15s;white-space:nowrap;}
+.stab:hover{background:var(--surface);color:var(--navy)}
+.stab.active{background:var(--navy);color:#fff}
+/* Canonical footer */
+.page-footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:1.25rem;font-size:12px;margin-top:3rem;}
+.page-footer strong{color:rgba(255,255,255,.85)}
+@media print{.site-nav,.section-tabs{display:none!important}.tab-content{display:none!important}.tab-content.active{display:block!important}}
+.snote{background:var(--goldbg);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:13.5px;color:#7a5e00;min-height:2.6em;}
+.snote .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
+.term-blank{border-bottom:1px dashed var(--border);min-height:2.4em;padding-bottom:6px;color:var(--muted);}
+/* Game widget */
+.game-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0;overflow:hidden;margin:16px 0;}
+.game-head{background:var(--navy);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.game-head h4{color:var(--gold2);margin:0;font-size:15px;}
+.game-score{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gold2);}
+.game-body{padding:26px;}
+.game-progress{height:6px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:20px;}
+.game-progress-fill{height:100%;background:var(--gold);transition:width .3s;}
+.game-scenario{font-size:15px;font-weight:500;margin-bottom:18px;color:var(--navy);}
+.game-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.game-opt{padding:14px 16px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;font-size:13.5px;text-align:left;font-family:inherit;transition:all .12s;}
+.game-opt:hover:not(.locked){border-color:var(--gold);background:var(--goldbg);}
+.game-opt.correct{background:var(--greenbg);border-color:#2ecc71;color:#155724;font-weight:600;}
+.game-opt.wrong{background:var(--redbg);border-color:#c0392b;color:#721c24;}
+.game-feedback{margin-top:16px;padding:14px 16px;border-radius:8px;font-size:13px;display:none;}
+.game-feedback.show{display:block;}
+.game-feedback.gf-correct{background:var(--greenbg);color:#155724;border-left:3px solid #2ecc71;}
+.game-feedback.gf-wrong{background:var(--redbg);color:#721c24;border-left:3px solid #c0392b;}
+.game-next{margin-top:16px;background:var(--navy);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:13px;cursor:pointer;font-family:inherit;display:none;}
+.game-next.show{display:inline-block;}
+.game-final{text-align:center;padding:30px 10px;}
+.game-final .score-big{font-size:44px;font-weight:700;color:var(--navy);font-family:'JetBrains Mono',monospace;}
+.game-final .tier{font-size:16px;font-weight:600;color:var(--gold);margin:8px 0 18px;text-transform:uppercase;letter-spacing:.06em;}
+.game-restart{background:var(--gold);color:var(--navy);border:none;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Course navigation">
+ <div class="nav-inner">
+ <a class="nav-logo" href="#">
+ <div class="nav-logo-mark">CM</div>
+ <div class="nav-course">CM 4560: Construction Project Management<span>Kennesaw State University</span></div>
+ </a>
+ </div>
+</nav>
+
+<div class="inst-banner">⚠ INSTRUCTOR EDITION — Contains Answer Keys &amp; Teaching Notes — Do Not Distribute to Students</div>
+
+<div class="hero">
+ <div class="hero-meta">
+ <span class="pill">CM 4560: Construction Project Management</span>
+ <span class="pill">Week 3 · Class 6</span>
+ <span class="pill">Thursday, September 10, 2026</span>
+ <span class="pill gold">INSTRUCTOR EDITION</span>
+ </div>
+ <h1>Estimating, Cost Planning &amp; <span>Scope Alignment</span></h1>
+ <p class="hero-sub">How a number becomes trustworthy &mdash; from quantity takeoff to a signed GMP &mdash; and why the scope behind the number matters more than the arithmetic.</p>
+ <div class="hero-stats">
+ <div class="hero-stat"><label>Duration</label><value>75 min</value></div>
+ <div class="hero-stat"><label>Estimate Classes</label><value>5</value></div>
+ <div class="hero-stat"><label>Build-Up Layers</label><value>4</value></div>
+ <div class="hero-stat"><label>Activities</label><value>2 + Game</value></div>
+ </div>
+</div>
+
+<div class="pw" style="padding-bottom:0;padding-top:1.5rem;">
+<div class="section-tabs" role="tablist" aria-label="Lecture sections">
+<button class="stab active" role="tab" onclick="showTab('overview')">📋 Overview</button>
+<button class="stab" role="tab" onclick="showTab('objectives')">🎯 Objectives</button>
+<button class="stab" role="tab" onclick="showTab('notes')">📖 Lecture Notes</button>
+<button class="stab" role="tab" onclick="showTab('terms')">📚 Key Terms</button>
+<button class="stab" role="tab" onclick="showTab('activities')">⚡ Activities</button>
+<button class="stab" role="tab" onclick="showTab('diagrams')">📐 Diagrams</button>
+<button class="stab" role="tab" onclick="showTab('ethics')">⚖️ Ethics &amp; Leadership</button>
+<button class="stab" role="tab" onclick="showTab('game')">🎮 Game</button>
+<button class="stab" role="tab" onclick="showTab('homework')">📝 Homework</button>
+<button class="stab" role="tab" onclick="showTab('resources')">🔗 Resources</button>
+</div>
+</div>
+
+<div id="tab-overview" class="tab-content active">
+<div class="pw">
+<h2>Class 6 Overview</h2>
+<div class="inote"><div class="lbl">📋 Instructor Prep</div>Students often confuse "detailed" with "correct" &mdash; a Class 1 estimate can still be wrong if it's priced against the wrong scope. The whole second half of this lesson exists to break that assumption. Bring a calculator or have students use phone calculators for Activity #1. Pre-load a blank quantity takeoff sheet on the classroom screen to model the worked example live before releasing students into groups. Course runs Aug 25&ndash;Dec 3, 2026 (no class Nov 24&ndash;26, Thanksgiving break).</div>
+
+<h3>Timed Lecture Outline</h3>
+<div class="tl">
+<div class="tli"><span class="ttime">0:00&ndash;0:05 (5 min)</span><div class="ttitle">Hook &amp; Context</div><div class="tdesc">Real case: a $2.1M design-build project where a missing scope line (fire pump room finishes) surfaced during construction &mdash; not a math error, a scope-alignment failure. Ask: "Whose fault was this?"</div></div>
+<div class="tli"><span class="ttime">0:05&ndash;0:15 (10 min)</span><div class="ttitle">Classes of Estimates</div><div class="tdesc">AACE five-class system (Class 5 &rarr; Class 1), typical accuracy ranges, and where each sits in the project lifecycle.</div></div>
+<div class="tli"><span class="ttime">0:15&ndash;0:30 (15 min)</span><div class="ttitle">Anatomy of a Detailed Estimate</div><div class="tdesc">Quantity takeoff &rarr; unit costs &rarr; direct costs &rarr; general conditions &rarr; OH&amp;P &rarr; contingency &rarr; total. Work the concrete slab example live on the board.</div></div>
+<div class="tli"><span class="ttime">0:30&ndash;0:40 (10 min)</span><div class="ttitle">Scope Alignment: WBS &harr; Estimate &harr; Scope Document</div><div class="tdesc">Every estimate line item should trace to a WBS element and a scope narrative line. Introduce the basis-of-estimate (BOE) and exclusions list as the estimator's insurance policy.</div></div>
+<div class="tli"><span class="ttime">0:40&ndash;0:55 (15 min)</span><div class="ttitle">Activity #1: "Build the Estimate"</div><div class="tdesc">Small groups take off quantities, price them, and roll up to a total price. Debrief on where teams landed and why totals differ.</div></div>
+<div class="tli"><span class="ttime">0:55&ndash;1:05 (10 min)</span><div class="ttitle">Scope Creep &amp; Contingency Stewardship</div><div class="tdesc">Causes of scope-estimate drift; PM levers (allowances, exclusions lists, contingency tracking). Bridge into the ethics tab.</div></div>
+<div class="tli"><span class="ttime">1:05&ndash;1:12 (7 min)</span><div class="ttitle">Activity #2: "The Scope Gap" &amp; Ethics Discussion</div><div class="tdesc">Pairs work through a disclosure dilemma using the PMI Code of Ethics.</div></div>
+<div class="tli"><span class="ttime">1:12&ndash;1:15 (3 min)</span><div class="ttitle">Wrap-Up &amp; Homework</div><div class="tdesc">Review key points, assign homework, preview Class 7 &mdash; turning the estimate into a bid package.</div></div>
+</div>
+
+<div class="callout cg"><strong>⚡ Teaching Tip</strong>The compounding-markup math is the single biggest "aha" moment in this lesson. Build the GC &rarr; OH&amp;P &rarr; contingency stack live on the board, one multiplier at a time &mdash; it lands better built up than shown all at once, and it pre-empts the most common student error (adding percentages instead of compounding them).</div>
+</div>
+</div>
+<div id="tab-objectives" class="tab-content">
+<div class="pw">
+<h2>Learning Objectives</h2>
+<p>By the end of Class 6, students will be able to:</p>
+
+<ul class="objlist">
+<li class="objitem"><span class="objnum">1</span><div>Explain the AACE five-class estimate classification system and identify where each class sits in the project lifecycle and its typical accuracy range.</div></li>
+<li class="objitem"><span class="objnum">2</span><div>Perform a basic quantity takeoff and apply unit costs to build a line-item cost estimate.</div></li>
+<li class="objitem"><span class="objnum">3</span><div>Distinguish direct costs, general conditions, overhead &amp; profit, allowances, and contingency, and correctly assemble them into a total project cost.</div></li>
+<li class="objitem"><span class="objnum">4</span><div>Explain how a Work Breakdown Structure (WBS) is used to reconcile a cost estimate against project scope and identify gaps before they become change orders.</div></li>
+<li class="objitem"><span class="objnum">5</span><div>Apply the PMI Code of Ethics and Professional Conduct to an estimating disclosure dilemma.</div></li>
+<li class="objitem"><span class="objnum">6</span><div>Recommend and document a scope-alignment reconciliation for a given project scenario in a professional written format.</div></li>
+</ul>
+
+<div class="inote"><div class="lbl">📋 Bloom's Alignment</div>Objectives 1&ndash;3: Remember/Understand/Apply. Objective 4: Apply/Analyze. Objective 5: Evaluate (ethics reasoning). Objective 6: Create/Evaluate (professional judgment &amp; synthesis). Push hardest on Objectives 5&ndash;6 in discussion &mdash; they're what separates CM thinking from rote calculation.</div>
+
+<h3>Career Relevance</h3>
+<div class="card">
+<h4>Why Every CM Needs This</h4>
+<ul>
+<li><strong>Preconstruction:</strong> Estimators and PMs jointly own the transition from design intent to a fundable number &mdash; the GMP or lump-sum price the owner signs.</li>
+<li><strong>Change Order Prevention:</strong> Most costly change orders trace back to a scope item that was never in the estimate, not to a math error.</li>
+<li><strong>Owner Trust:</strong> A clean, well-documented basis of estimate with a clear exclusions list is what lets an owner trust a number under a CM at Risk GMP.</li>
+<li><strong>Career Path Fit:</strong> Estimating is one of the most common entry points into construction PM careers &mdash; these skills get used weekly for the rest of a CM career.</li>
+</ul>
+</div>
+
+</div>
+</div>
+<div id="tab-notes" class="tab-content">
+<div class="pw">
+<h2>Lecture Notes &mdash; Estimating, Cost Planning &amp; Scope Alignment</h2>
+
+<h3>Why Estimating Comes Before Everything Else Financial</h3>
+<p>Every budget decision, every owner go/no-go decision, and every contractor bid decision depends on an estimate. An estimate is the dollar expression of scope, produced against a schedule assumption, at a defined level of risk.</p>
+<div class="callout cb"><strong>🔑 Key Concept</strong>An estimate is only as good as the scope definition behind it. The math is the easy part &mdash; confirming what is actually included is the hard part, and it's where CMs add the most value.</div>
+
+<h3>Classes of Estimates (AACE International Framework)</h3>
+<p>AACE International's Recommended Practice 17R-97 (generic) and 56R-08 (building and general construction) define a five-class system that ranks estimates by their level of project definition &mdash; not by who prepared them or how much effort went in.</p>
+<div class="inote"><div class="lbl">📋 Talking Point</div>"Estimate class is a property of the information available, not the project itself. A rushed Class 5 estimate done for a fully-designed project is still a Class 5 estimate if it's based on square-footage historical data instead of the actual drawings in hand."</div>
+<div class="ot"><table>
+<colgroup><col style="width:12%"><col style="width:22%"><col style="width:18%"><col style="width:20%"><col style="width:28%"></colgroup>
+<thead><tr><th>Class</th><th>CM Industry Name</th><th>Project Definition</th><th>Typical Accuracy*</th><th>Typical Basis</th></tr></thead>
+<tbody>
+<tr><td><span class="badge c5">Class 5</span></td><td>Order of Magnitude / ROM</td><td>0&ndash;2%</td><td>-50% / +100%</td><td>Historical $/SF, capacity curves</td></tr>
+<tr><td><span class="badge c4">Class 4</span></td><td>Conceptual / Schematic</td><td>1&ndash;15%</td><td>-30% / +50%</td><td>Schematic design, assemblies pricing</td></tr>
+<tr><td><span class="badge c3">Class 3</span></td><td>Design Development / Budget</td><td>10&ndash;40%</td><td>-20% / +30%</td><td>DD drawings, partial specs, sub budget quotes</td></tr>
+<tr><td><span class="badge c2">Class 2</span></td><td>Construction Documents / Bid</td><td>30&ndash;75%</td><td>-15% / +20%</td><td>90&ndash;100% CDs, detailed takeoff, firm sub quotes</td></tr>
+<tr><td><span class="badge c1">Class 1</span></td><td>Definitive / Check Estimate</td><td>50&ndash;100%</td><td>-10% / +15%</td><td>Fully bid, signed subcontracts, GMP reconciliation</td></tr>
+</tbody>
+</table></div>
+<p style="font-size:12.5px;color:var(--muted);">*Generic AACE 17R-97 ranges shown for teaching purposes; AACE 56R-08 (building/general construction) provides construction-industry-specific input-maturity tables. Ranges assume contingency has been appropriately addressed &mdash; roughly 80% of projects should fall within the stated band.</p>
+<div class="callout cgr"><strong>✅ CM Application</strong>A CM at Risk project typically re-estimates at each design milestone &mdash; SD (Class 4), DD (Class 3), and CDs (Class 2) &mdash; narrowing the range each time until the GMP is set on a Class 2/1 estimate.</div>
+
+<h3>Anatomy of a Detailed Cost Estimate</h3>
+<div class="card">
+<h4>The Build-Up, Line by Line</h4>
+<ol>
+<li><strong>Quantity takeoff (QTO):</strong> Measure quantities directly from drawings/specs.</li>
+<li><strong>Unit costs:</strong> Apply a $/unit rate built from material + labor + equipment.</li>
+<li><strong>Direct costs:</strong> Sum of all quantity &times; unit-cost extensions.</li>
+<li><strong>Indirect costs / general conditions (GCs):</strong> Project-level costs &mdash; supervision, temp facilities, safety, permits, insurance.</li>
+<li><strong>Overhead &amp; profit (OH&amp;P):</strong> Home-office overhead recovery plus contractor markup.</li>
+<li><strong>Contingency:</strong> Reserve for known-unknowns within the defined scope.</li>
+</ol>
+<p style="margin-top:10px;"><strong>Total Estimate = Direct Costs + General Conditions + OH&amp;P + Contingency</strong></p>
+</div>
+
+<h3>Worked Example &mdash; Concrete Slab-on-Grade Takeoff</h3>
+<div class="inote"><div class="lbl">📋 Work This Live</div>Walk this example on the whiteboard before releasing students to Activity #1 &mdash; it is the exact structure they will repeat with different numbers.</div>
+<div class="ot"><table>
+<colgroup><col style="width:34%"><col style="width:16%"><col style="width:16%"><col style="width:17%"><col style="width:17%"></colgroup>
+<thead><tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Unit Cost</th><th>Extension</th></tr></thead>
+<tbody>
+<tr><td>Slab-on-grade, 4" (100' &times; 60' = 6,000 SF)</td><td>74.1</td><td>CY</td><td>$185/CY</td><td>$13,709</td></tr>
+<tr><td>6&times;6 W2.9&times;W2.9 WWF reinforcing</td><td>6,000</td><td>SF</td><td>$0.55/SF</td><td>$3,300</td></tr>
+<tr><td>Vapor barrier, 10-mil poly</td><td>6,000</td><td>SF</td><td>$0.28/SF</td><td>$1,680</td></tr>
+<tr><td>Fine grade &amp; compact subgrade</td><td>6,000</td><td>SF</td><td>$0.42/SF</td><td>$2,520</td></tr>
+<tr><td><strong>Direct Cost Subtotal</strong></td><td colspan="3"></td><td><strong>$21,209</strong></td></tr>
+<tr><td>General Conditions (8% of direct cost)</td><td colspan="3"></td><td>$1,697</td></tr>
+<tr><td>Overhead &amp; Profit (12% of subtotal)</td><td colspan="3"></td><td>$2,749</td></tr>
+<tr><td>Contingency (5% &mdash; Class 3 estimate)</td><td colspan="3"></td><td>$1,283</td></tr>
+<tr><td><strong>Total Price</strong></td><td colspan="3"></td><td><strong>$26,938</strong></td></tr>
+</tbody>
+</table></div>
+<div class="inote"><div class="lbl">📋 Math Check</div>21,209 &times; 1.08 = 22,906 (GCs) &rarr; &times; 1.12 = 25,655 (OH&amp;P) &rarr; &times; 1.05 = 26,938 (Contingency). Markups compound sequentially, not additively &mdash; a common student error is adding 8% + 12% + 5% = 25% as a single multiplier, which understates the total.</div>
+
+<h3>Scope Alignment: WBS &harr; Estimate &harr; Scope Document</h3>
+<p>A cost estimate is only trustworthy if it can be traced in both directions: every dollar traces back to a scope item, and every scope item traces forward to a dollar. The Work Breakdown Structure (WBS) is the bridge between the two.</p>
+<div class="card">
+<h4>The Reconciliation Loop</h4>
+<ol>
+<li><strong>Scope document / OPR / narrative</strong> describes what the owner is buying, in words.</li>
+<li><strong>WBS</strong> decomposes that scope into deliverable-oriented work packages.</li>
+<li><strong>Cost estimate</strong> prices each WBS work package via quantity takeoff and unit costs.</li>
+<li><strong>Basis of Estimate (BOE)</strong> documents assumptions, inclusions, and exclusions for every major line.</li>
+<li><strong>Reconciliation:</strong> Walk the WBS against the estimate. Gaps in either direction are scope-alignment failures waiting to become change orders.</li>
+</ol>
+</div>
+<div class="callout cr"><strong>⚠ Where Gaps Hide</strong>Interface/scope-boundary items (who furnishes vs. who installs), permit and testing/commissioning costs, owner-furnished equipment hookups, and "assumed included" items across trade packages are the most common places a scope item disappears between design and estimate.</div>
+
+<h3>Scope Creep &amp; Estimate&ndash;Budget Misalignment</h3>
+<div class="grid2">
+<div class="card"><h4>Common Causes</h4><ul><li>Incomplete design documents at time of estimate</li><li>Verbal owner direction not captured in writing</li><li>Allowances set too low with no vendor pricing yet</li><li>Missing exclusions list</li><li>Estimator/designer working from different drawing revisions</li></ul></div>
+<div class="card"><h4>PM Prevention Strategies</h4><ul><li>Require a written Basis of Estimate with exclusions list</li><li>Track contingency drawdown by cause, not just dollars</li><li>Use allowances for real-but-undefined scope</li><li>Reconcile estimate against WBS at every milestone</li><li>Document all direction in writing</li></ul></div>
+</div>
+
+<div class="inote"><div class="lbl">📋 Talking Point</div>"A perfectly calculated estimate built on the wrong scope is still a wrong number. Ask students: if your math is flawless but you priced the wrong drawing revision, is your estimate 'accurate'? That question is where scope alignment becomes memorable."</div>
+</div>
+</div>
+<div id="tab-terms" class="tab-content">
+<div class="pw">
+<h2>Key Terms &mdash; Class 6</h2>
+<div class="inote"><div class="lbl">📋 Note</div>Student edition has definitions blank for note-taking. These are the complete definitions for your reference.</div>
+<div class="grid2">
+<div class="card"><h4>Quantity Takeoff (QTO)</h4><p>The process of measuring quantities of materials, labor, and equipment directly from drawings and specifications to support pricing.</p></div><div class="card"><h4>Unit Cost</h4><p>The cost per unit of measure (SF, CY, LF, EA) for an item of work, built up from material, labor, and equipment costs.</p></div><div class="card"><h4>Direct Costs</h4><p>Costs directly attributable to the physical construction &mdash; labor, material, and equipment for specific work items, from the quantity takeoff.</p></div><div class="card"><h4>Indirect Costs / General Conditions</h4><p>Project-level costs not tied to a specific quantity of work: supervision, temporary facilities, safety, permits, insurance, project office.</p></div><div class="card"><h4>Overhead &amp; Profit (OH&amp;P)</h4><p>Home-office overhead recovery plus the contractor's markup, typically applied as a percentage to the direct cost + GC subtotal.</p></div><div class="card"><h4>Contingency</h4><p>A reserve for known-unknowns within the defined scope of work; decreases in percentage as estimate class matures and design definition increases.</p></div><div class="card"><h4>Allowance</h4><p>A placeholder dollar amount for scope that is real and included, but not yet fully defined (e.g., owner-selected finishes). Different from contingency, which covers risk, not undefined scope.</p></div><div class="card"><h4>Work Breakdown Structure (WBS)</h4><p>A hierarchical decomposition of total project scope into deliverable-oriented work packages; the structural bridge between scope documents and the cost estimate.</p></div><div class="card"><h4>Basis of Estimate (BOE)</h4><p>The documented assumptions, methodology, inclusions, and exclusions behind an estimate &mdash; the estimator's paper trail for what a number does and does not represent.</p></div><div class="card"><h4>Scope Creep</h4><p>The uncontrolled expansion of project scope without corresponding adjustments to budget, schedule, or resources &mdash; often caused by undocumented direction or unclear scope boundaries.</p></div>
+</div>
+</div>
+</div>
+<div id="tab-activities" class="tab-content">
+<div class="pw">
+<h2>In-Class Activities</h2>
+
+<div class="actbox">
+<h3>Activity #1 &mdash; "Build the Estimate"</h3>
+<div class="actmeta">
+<div class="amitem">Format: <span>Small groups (3&ndash;4 students)</span></div>
+<div class="amitem">Time: <span>15 minutes + debrief</span></div>
+<div class="amitem">Tools: <span>Calculator / phone</span></div>
+</div>
+<p>Groups take off quantities from a simple scope sketch, price each line, and roll it up to a total price using the same build-up structure as the worked example. Debrief by comparing group totals and discussing where numbers diverged.</p>
+</div>
+<div class="inote"><div class="lbl">📋 Debrief Guide</div>Expect totals to vary &plusmn;10&ndash;15% across groups even using the same unit costs &mdash; that's the point. Ask which assumptions drove the difference (rounding on quantities, whether OH&amp;P was compounded or added, whether a group forgot GCs entirely). Reveal the instructor answer only after every group has reported a number.</div>
+
+<div class="card">
+<h4>Scenario &mdash; Activity #1</h4>
+<p>Your crew must pour a new equipment pad: <strong>40 ft &times; 25 ft, 6" thick</strong>, with welded wire fabric reinforcing and a vapor barrier. Subgrade requires fine grading and compaction. Use the unit costs from the worked example (concrete $185/CY, WWF $0.55/SF, vapor barrier $0.28/SF, fine grade/compact $0.42/SF). Apply 8% general conditions, 12% OH&amp;P, and 5% contingency (Class 3 estimate), applied sequentially.</p>
+<div class="ans">
+<strong>Instructor Answer Key:</strong><br>
+Area = 40 &times; 25 = 1,000 SF. Volume = 1,000 SF &times; (6/12 ft) = 500 CF &divide; 27 = <strong>18.52 CY</strong><br>
+Concrete: 18.52 CY &times; $185 = <strong>$3,426</strong><br>
+WWF: 1,000 SF &times; $0.55 = <strong>$550</strong><br>
+Vapor barrier: 1,000 SF &times; $0.28 = <strong>$280</strong><br>
+Fine grade/compact: 1,000 SF &times; $0.42 = <strong>$420</strong><br>
+<strong>Direct Cost Subtotal = $4,676</strong><br>
+&times; 1.08 (GCs) = $5,050 &rarr; &times; 1.12 (OH&amp;P) = $5,656 &rarr; &times; 1.05 (Contingency) = <strong>$5,939 Total Price</strong><br>
+Accept answers within &plusmn;$25 for rounding on the CY conversion.
+</div>
+</div>
+
+<div class="actbox" style="margin-top:32px;">
+<h3>Activity #2 &mdash; "The Scope Gap"</h3>
+<div class="actmeta">
+<div class="amitem">Format: <span>Pairs</span></div>
+<div class="amitem">Time: <span>7 minutes + 5 min debrief</span></div>
+</div>
+<p>An estimator discovers a missed scope item after the GMP is signed. Students work through the technical and ethical implications and decide the CM's next step.</p>
+</div>
+<div class="card">
+<h4>Scenario</h4>
+<p>You are the estimator/assistant PM on a $6.4M CM at Risk renovation. The GMP was signed three weeks ago with a $180,000 construction contingency. While preparing the buyout package, you discover the original estimate never priced the required fire pump room finishes (drywall, paint, door, and finish flooring) &mdash; a real scope item shown on the approved drawings but missed during takeoff. A subcontractor quote puts the cost at $22,000.</p>
+
+<ol>
+<li>Is this a contingency item, an allowance item, or a change order? Why?</li>
+<li>Should you tell the owner? Why or why not?</li>
+<li>What PMI Code of Ethics value(s) are most directly at stake?</li>
+<li>What is your very next step?</li>
+</ol>
+
+</div>
+<div class="ans"><strong>Answer Key:</strong><br>
+<strong>1.</strong> Neither an allowance nor a legitimate change order &mdash; it's an estimating error on scope that was already defined in the contract documents. The GC's contingency, not the owner's budget, should absorb it.<br><br>
+<strong>2.</strong> Yes &mdash; disclose it. The owner is entitled to visibility into how their contingency (which exists to cover risk, not to backstop the GC's takeoff errors) is being consumed.<br><br>
+<strong>3.</strong> Honesty (accurately representing why the cost exists) and Fairness (not quietly shifting an estimating error's cost onto a reserve the owner believes is protecting them from field risk).<br><br>
+<strong>4.</strong> Document the discovery, notify the PM/project executive internally, prepare a written disclosure memo for the owner, and update the contingency log so the reserve's remaining balance and its causes stay transparent going forward.
+</div>
+</div>
+</div>
+<div id="tab-diagrams" class="tab-content">
+<div class="pw">
+<h2>Visual Aids &amp; Diagrams</h2>
+
+<h3>Diagram 1: AACE Estimate Classes &mdash; The Cone of Uncertainty</h3>
+<div class="dw">
+<svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect width="880" height="380" fill="#f7f8fc" rx="12"/>
+<text x="440" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2744">AACE Estimate Classes &mdash; Accuracy Narrows as Design Matures</text>
+<text x="440" y="48" text-anchor="middle" font-size="11" fill="#5a6080">Based on AACE International RP 17R-97 / 56R-08</text>
+<line x1="80" y1="90" x2="80" y2="320" stroke="#5a6080" stroke-width="1.5"/>
+<line x1="80" y1="320" x2="820" y2="320" stroke="#5a6080" stroke-width="1.5"/>
+<text x="45" y="95" font-size="10" fill="#5a6080">+100%</text>
+<text x="45" y="205" font-size="10" fill="#5a6080">0%</text>
+<text x="45" y="318" font-size="10" fill="#5a6080">-50%</text>
+<text x="450" y="345" text-anchor="middle" font-size="11" fill="#5a6080">Project Definition &mdash; Class 5 (least) &rarr; Class 1 (most)</text>
+<polygon points="150,120 150,290 800,208 800,202" fill="#c9a84c" opacity="0.18"/>
+<polyline points="150,120 300,150 450,178 600,193 800,202" stroke="#1a6e3c" stroke-width="2.5" fill="none"/>
+<polyline points="150,290 300,255 450,225 600,212 800,208" stroke="#8b1a1a" stroke-width="2.5" fill="none"/>
+<line x1="150" y1="120" x2="150" y2="290" stroke="#1a2744" stroke-width="2"/>
+<circle cx="150" cy="205" r="6" fill="#c9a84c"/><text x="150" y="240" font-size="10" text-anchor="middle" font-weight="700" fill="#7b4f00">Class 5</text><text x="150" y="253" font-size="9" text-anchor="middle" fill="#7b4f00">ROM</text>
+<circle cx="300" cy="203" r="6" fill="#c9a84c"/><text x="300" y="270" font-size="10" text-anchor="middle" font-weight="700" fill="#7b4f00">Class 4</text><text x="300" y="283" font-size="9" text-anchor="middle" fill="#7b4f00">Schematic</text>
+<circle cx="450" cy="201" r="6" fill="#0c5460"/><text x="450" y="242" font-size="10" text-anchor="middle" font-weight="700" fill="#0c5460">Class 3</text><text x="450" y="255" font-size="9" text-anchor="middle" fill="#0c5460">Design Dev / Budget</text>
+<circle cx="600" cy="202" r="6" fill="#0c5460"/><text x="600" y="242" font-size="10" text-anchor="middle" font-weight="700" fill="#0c5460">Class 2</text><text x="600" y="255" font-size="9" text-anchor="middle" fill="#0c5460">Construction Docs</text>
+<circle cx="800" cy="205" r="6" fill="#155724"/><text x="775" y="245" font-size="10" text-anchor="middle" font-weight="700" fill="#155724">Class 1</text><text x="775" y="258" font-size="9" text-anchor="middle" fill="#155724">Definitive</text>
+<rect x="620" y="88" width="200" height="60" rx="8" fill="#fff" stroke="#d8dce8"/>
+<text x="720" y="106" text-anchor="middle" font-size="10" font-weight="700" fill="#1a2744">Upper bound: +100% &rarr; +15%</text>
+<text x="720" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#1a2744">Lower bound: -50% &rarr; -10%</text>
+<text x="720" y="138" text-anchor="middle" font-size="9" fill="#5a6080">Range narrows as scope firms up</text>
+</svg>
+</div>
+
+<h3>Diagram 2: Anatomy of a Cost Estimate &mdash; The Build-Up</h3>
+<div class="dw">
+<svg viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect width="880" height="220" fill="#f7f8fc" rx="12"/>
+<text x="440" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2744">Estimate Build-Up: From Quantities to Total Price</text>
+<rect x="20" y="120" width="140" height="70" fill="#1a2744"/>
+<text x="90" y="150" text-anchor="middle" font-size="11" font-weight="700" fill="#c9a84c">Direct Costs</text>
+<text x="90" y="166" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)">QTO &times; Unit Cost</text>
+<rect x="175" y="100" width="140" height="90" fill="#243260"/>
+<text x="245" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#c9a84c">+ General</text>
+<text x="245" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="#c9a84c">Conditions</text>
+<text x="245" y="164" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.7)">~5&ndash;10% typical</text>
+<rect x="330" y="80" width="140" height="110" fill="#1a4080"/>
+<text x="400" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">+ OH&amp;P</text>
+<text x="400" y="128" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)">Overhead &amp;</text>
+<text x="400" y="143" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)">Profit</text>
+<text x="400" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.6)">~8&ndash;15% typical</text>
+<rect x="485" y="60" width="140" height="130" fill="#7b1a1a"/>
+<text x="555" y="95" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">+ Contingency</text>
+<text x="555" y="112" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)">Reserve for</text>
+<text x="555" y="127" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)">known-unknowns</text>
+<text x="555" y="145" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.6)">3&ndash;15% by class</text>
+<rect x="640" y="40" width="220" height="150" fill="#1a6e3c"/>
+<text x="750" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">= TOTAL PRICE</text>
+<text x="750" y="100" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.85)">The GMP or lump-sum</text>
+<text x="750" y="115" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.85)">the owner signs</text>
+<text x="750" y="135" text-anchor="middle" font-size="9" fill="#c9e8d5">Markups compound</text>
+<text x="750" y="149" text-anchor="middle" font-size="9" fill="#c9e8d5">sequentially, not additively</text>
+<text x="440" y="210" text-anchor="middle" font-size="10" fill="#5a6080">Each layer is applied to the running subtotal &mdash; not the original direct cost</text>
+</svg>
+</div>
+
+<h3>Diagram 3: Scope &harr; WBS &harr; Estimate Reconciliation Loop</h3>
+<div class="dw">
+<svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect width="880" height="260" fill="#f7f8fc" rx="12"/>
+<text x="440" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2744">Scope Alignment: The Reconciliation Loop</text>
+<defs><marker id="arrX" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#1a2744"/></marker></defs>
+<rect x="30" y="80" width="170" height="70" rx="8" fill="#1a2744"/>
+<text x="115" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#c9a84c">Scope Document</text>
+<text x="115" y="124" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.75)">OPR / Narrative</text>
+<text x="115" y="138" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)">What owner is buying</text>
+<line x1="200" y1="115" x2="255" y2="115" stroke="#1a2744" stroke-width="2" marker-end="url(#arrX)"/>
+<rect x="260" y="80" width="170" height="70" rx="8" fill="#1a4080"/>
+<text x="345" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">WBS</text>
+<text x="345" y="124" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)">Work Packages</text>
+<text x="345" y="138" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.6)">Deliverable-oriented</text>
+<line x1="430" y1="115" x2="485" y2="115" stroke="#1a2744" stroke-width="2" marker-end="url(#arrX)"/>
+<rect x="490" y="80" width="170" height="70" rx="8" fill="#7b1a1a"/>
+<text x="575" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Cost Estimate</text>
+<text x="575" y="124" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.8)">QTO &times; Unit Cost</text>
+<text x="575" y="138" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.6)">Per work package</text>
+<line x1="660" y1="115" x2="715" y2="115" stroke="#1a2744" stroke-width="2" marker-end="url(#arrX)"/>
+<rect x="720" y="80" width="130" height="70" rx="8" fill="#1a6e3c"/>
+<text x="785" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Basis of</text>
+<text x="785" y="124" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Estimate</text>
+<text x="785" y="140" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.75)">Inclusions/exclusions</text>
+<line x1="785" y1="150" x2="785" y2="200" stroke="#c9a84c" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="785" y1="200" x2="115" y2="200" stroke="#c9a84c" stroke-width="2" stroke-dasharray="5,3"/>
+<line x1="115" y1="200" x2="115" y2="155" stroke="#c9a84c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrX)"/>
+<text x="450" y="216" text-anchor="middle" font-size="10" font-weight="600" fill="#7b4f00">Reconcile: does every WBS element have a cost home, and every cost line trace to scope?</text>
+<text x="450" y="234" text-anchor="middle" font-size="10" fill="#7b4f00">Gaps in either direction are scope-alignment failures waiting to become change orders.</text>
+</svg>
+</div>
+
+</div>
+</div>
+<div id="tab-ethics" class="tab-content">
+<div class="pw">
+<h2>Ethics, Leadership &amp; Professional Decision-Making</h2>
+<p>Estimating and cost planning decisions are where a construction PM's professional judgment is tested most directly &mdash; bid deadlines, competitive pressure, and real money in an owner's contingency reserve.</p>
+
+<h3>The PMI Code of Ethics and Professional Conduct</h3>
+<div class="grid2">
+<div class="card"><h4>Responsibility</h4><p>Owning the consequences of the numbers you produce, including admitting an error once found &mdash; even after the GMP is signed.</p></div>
+<div class="card"><h4>Respect</h4><p>Treating the owner's money and trust with the same care you'd want extended to your own.</p></div>
+<div class="card"><h4>Fairness</h4><p>Not padding contingency to quietly cover a known gap instead of disclosing it, and not exploiting ambiguous scope language to the owner's disadvantage.</p></div>
+<div class="card"><h4>Honesty</h4><p>Representing an estimate's basis, exclusions, and confidence level accurately &mdash; never presenting a Class 4 number with Class 1 confidence to win an approval.</p></div>
+</div>
+<div class="callout cb"><strong>🔑 Source</strong>Project Management Institute, <em>Code of Ethics and Professional Conduct</em>. These four values apply directly to estimating: an estimator who quietly absorbs a missed scope item through contingency without disclosure violates Honesty and Fairness even if no policy is technically broken.</div>
+
+<h3>Disclosure and Contingency Stewardship</h3>
+<p>Contingency is uniquely vulnerable to quiet misuse because, unlike a change order, drawing it down doesn't require owner sign-off in most contracts. Common patterns: absorbing a takeoff error through contingency without telling the owner, using contingency to cover scope that should have been an allowance, or under-reporting the remaining balance to avoid a difficult conversation.</p>
+<div class="callout cr"><strong>⚠ The Standard Is Disclosure, Not Just Intent</strong>PMI's ethical standard calls for proactive disclosure of what is consuming the reserve &mdash; regardless of whether the estimator believes the amount is "small enough not to matter." The owner's contingency exists to protect the owner from field risk, not to backstop the estimator's own errors invisibly.</div>
+
+<h3>Leadership Under Bid-Day Pressure</h3>
+<p>Estimating is one of the highest-pressure moments for professional integrity in a CM career: competitive deadlines, pressure to win work, and the temptation to under-disclose risk to make a number look better. A PM or lead estimator sets the tone for the whole team on whether shortcuts under deadline pressure are acceptable.</p>
+
+<h3>A Simple Professional Decision-Making Framework</h3>
+<div class="card">
+<h4>Four Steps</h4>
+<ol>
+<li><strong>Identify the issue</strong> &mdash; name the gap or dilemma precisely, not vaguely</li>
+<li><strong>Consider stakeholders and PMI's four values</strong> &mdash; who is affected, and which value is most at stake?</li>
+<li><strong>Evaluate alternatives</strong> &mdash; what are the realistic options, including disclosure?</li>
+<li><strong>Act and document</strong> &mdash; take the action and create a contemporaneous record of why</li>
+</ol>
+</div>
+
+<h3>Discussion Questions</h3>
+
+<ol>
+<li>Is quietly absorbing a $5,000 estimating error through a $180,000 contingency "no big deal"? Why does PMI's standard treat it as a disclosure issue regardless of size?</li>
+<li>How does an estimator document contingency drawdown so it withstands an owner audit or a dispute months later?</li>
+<li>What's the difference between reasonable optimism in an early Class 5 estimate and presenting that number with false confidence &mdash; and why does the line matter ethically, not just technically?</li>
+</ol>
+
+<div class="inote"><div class="lbl">📋 Discussion Guide</div>Q1: Push students past "it's a small dollar amount so it's fine" &mdash; PMI's Fairness value is about the transparency and structural integrity of the reserve, not the size of any single item. Q2: Look for answers mentioning a contingency log with dated entries, cause codes, and running balance, shared with the owner at each pay application. Q3: Reasonable optimism means stating the accuracy range honestly (e.g., "-30%/+50%, Class 4"); false confidence means dropping the range or implying certainty the underlying design definition doesn't support &mdash; that's the line between professional judgment and misrepresentation.</div>
+</div>
+</div>
+<div id="tab-game" class="tab-content">
+<div class="pw">
+<h2>Reinforce It: Estimate Builder Showdown</h2>
+<p>Play through 10 rounds covering estimate classes, cost build-up, scope alignment, and ethics &mdash; the same concepts from this lesson, in scenario form. Your score resets each time you replay.</p>
+<div class="game-wrap">
+<div class="game-head">
+<h4>🎮 Estimate Builder Showdown</h4>
+<div class="game-score" id="game-score">Score: 0</div>
+</div>
+<div class="game-body" id="game-active-body">
+<!-- populated by JS -->
+</div>
+</div>
+</div>
+</div>
+<div id="tab-homework" class="tab-content">
+<div class="pw">
+<h2>Homework &mdash; Class 6</h2>
+<p><strong>Due:</strong> Before Class 7 | <strong>Total Points:</strong> 50</p>
+<div class="inote"><div class="lbl">📋 Grading Note</div>Problems 1&ndash;2: recall + application/math. Problem 3: high-value scenario requiring synthesis across multiple concepts. Problem 4: professional reflection building judgment. Full answer keys included below each problem.</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 1 &mdash; Quantity Takeoff &amp; Pricing (15 pts, 5 pts each)</div>
+
+<p>A contractor must estimate a concrete sidewalk: <strong>200 ft long, 5 ft wide, 4" thick</strong>. Unit costs: concrete $185/CY, forming $2.10/LF of edge, finishing/broom finish $0.65/SF. Calculate:</p>
+<ol type="a">
+<li>Concrete quantity in cubic yards and its extended cost</li>
+<li>Forming cost (assume forming is required along both long edges only)</li>
+<li>Finishing cost, and the direct cost subtotal for all three items</li>
+</ol>
+
+<div class="ans"><strong>Answer Key:</strong><br>
+a. Volume = 200 &times; 5 &times; (4/12) = 333.3 CF &divide; 27 = <strong>12.35 CY</strong> &times; $185 = <strong>$2,285</strong><br>
+b. Edge length = 200 ft &times; 2 sides = 400 LF &times; $2.10 = <strong>$840</strong><br>
+c. Area = 200 &times; 5 = 1,000 SF &times; $0.65 = <strong>$650</strong>. <strong>Direct Cost Subtotal = $2,285 + $840 + $650 = $3,775</strong><br>
+Accept &plusmn;$15 for rounding.</div>
+</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 2 &mdash; True/False with Justification (10 pts, 2 pts each)</div>
+
+<p>State True or False and briefly explain your reasoning.</p>
+<ol type="a">
+<li>A Class 5 estimate is more accurate than a Class 2 estimate.</li>
+<li>Contingency and allowance are interchangeable terms for the same budget reserve.</li>
+<li>A well-documented Basis of Estimate should state what is excluded, not just what is included.</li>
+<li>Markups such as GCs, OH&amp;P, and contingency should be added together as a single percentage and applied once to the direct cost.</li>
+<li>A scope-alignment failure can exist even in a mathematically perfect estimate.</li>
+</ol>
+
+<div class="ans"><strong>Answer Key:</strong><br>
+a. <strong>FALSE.</strong> Class 5 is the least accurate (widest range); Class 1 is the most accurate. Lower class numbers mean more project definition and tighter accuracy.<br>
+b. <strong>FALSE.</strong> Contingency covers risk/known-unknowns within defined scope; an allowance covers scope that is real but not yet fully defined. They serve different purposes and should be tracked separately.<br>
+c. <strong>TRUE.</strong> Exclusions are just as important as inclusions &mdash; silence is often read by an owner as "included."<br>
+d. <strong>FALSE.</strong> Markups compound sequentially against the running subtotal, not added together as one combined percentage of the original direct cost.<br>
+e. <strong>TRUE.</strong> An estimate can be arithmetically flawless and still be wrong if it is priced against an incomplete or incorrect scope.</div>
+</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 3 &mdash; Case Study (20 pts)</div>
+
+<p>You are the estimator on a $9.5M ground-up office building, currently at 60% Construction Documents. The design team has issued the following updates since your last estimate:</p>
+<ul>
+<li>Structural: steel tonnage increased 8% due to a revised seismic design</li>
+<li>MEP: owner added a rooftop generator (not previously scoped)</li>
+<li>Architectural: lobby finish package upgraded from allowance-level to a specified stone finish</li>
+</ul>
+<p><strong>Part A:</strong> For each item, identify whether it represents (i) a normal estimate refinement, (ii) new scope requiring a WBS update, or (iii) an allowance being resolved into a firm cost. Explain your reasoning.</p>
+<p><strong>Part B:</strong> What estimate class should this project's estimate be classified as right now, and why?</p>
+<p><strong>Part C:</strong> Describe the specific step you would take to keep the WBS and Basis of Estimate aligned with these three changes before the next estimate submission.</p>
+
+<div class="ans"><strong>Answer Key &mdash; Part A:</strong><br>
+Steel tonnage increase: <strong>(i) normal refinement</strong> &mdash; same scope item, quantity refined as design develops.<br>
+Rooftop generator: <strong>(ii) new scope</strong> &mdash; a physical system that did not exist in the prior scope/WBS; requires a new WBS work package and owner notification.<br>
+Lobby finish upgrade: <strong>(iii) allowance resolved into firm cost</strong> &mdash; the allowance placeholder is replaced with a firm quote once the owner selects the finish; track as an allowance reconciliation, not a change order.<br><br>
+<strong>Part B:</strong> <strong>Class 3 (Design Development / Budget)</strong> &mdash; at 60% CDs the project sits in the overlap zone between Class 3 and Class 2; accept either with correct reasoning, since estimate class is driven by deliverable maturity, not a single percentage cutoff.<br><br>
+<strong>Part C:</strong> Update the affected WBS work packages, update the Basis of Estimate to document the reason for each change and its source, and formally reconcile the updated estimate against the WBS before resubmission so nothing is silently carried forward without a documented reason.</div>
+</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 4 &mdash; Professional Reflection (5 pts)</div>
+
+<p>In 150&ndash;200 words, describe a real or plausible scenario where a scope-alignment failure (not a math error) caused a costly change order on a construction project. Discuss: What scope item was missed and why? What were the consequences? What specific process would have caught it earlier?</p>
+
+<div class="ans"><strong>Grading Rubric:</strong> Clear scenario (1 pt) + correct identification that the failure is scope-based, not a calculation error (1 pt) + specific consequences discussed (1 pt) + a specific preventive process named (1 pt) + professional writing quality (1 pt). Accept any plausible scenario.</div>
+</div>
+
+</div>
+</div>
+<div id="tab-resources" class="tab-content">
+<div class="pw">
+<h2>Resources &amp; References</h2>
+
+<h3>Primary References &mdash; Class 6</h3>
+<div class="card">
+<ul>
+<li><strong>AACE International Recommended Practice 17R-97</strong> &mdash; Cost Estimate Classification System (generic)</li>
+<li><strong>AACE International Recommended Practice 56R-08</strong> &mdash; Cost Estimate Classification System as Applied in Building and General Construction Industries</li>
+<li><strong>PMI, <em>A Guide to the Project Management Body of Knowledge (PMBOK&reg; Guide)</em></strong> &mdash; Cost Management and Scope Management performance domains</li>
+<li><strong>PMI, <em>Code of Ethics and Professional Conduct</em></strong> &mdash; Responsibility, Respect, Fairness, Honesty</li>
+<li><strong>PMI Construction Professional (PMI-CP)</strong> content outline &mdash; estimating and budgeting competencies</li>
+</ul>
+</div>
+
+<h3>Estimate &amp; Scope Alignment Selection Checklist</h3>
+<div class="callout cg"><strong>📥 Career Tool</strong>Print and use this checklist on any project that involves preconstruction estimating, GMP development, or design-milestone re-estimating. It documents your due diligence for the owner's file and for your own professional judgment record.</div>
+<div class="card">
+<h4>✅ CM Estimate &amp; Scope Alignment Checklist</h4>
+<div class="chki"><div class="chkb"></div><div><strong>Step 1:</strong> Confirm the estimate class matches the actual maturity of the design deliverables in hand &mdash; do not assume percent-complete equals estimate class.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 2:</strong> Walk the WBS against the scope narrative/OPR. Every WBS element should trace to a stated owner requirement.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 3:</strong> Walk the cost estimate against the WBS. Every WBS element should have a cost home; every cost line should map to a WBS element.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 4:</strong> Check interface/scope-boundary items explicitly &mdash; who furnishes vs. who installs, permit/testing costs, owner-furnished equipment hookups.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 5:</strong> Document a written exclusions/clarifications list on every estimate submission &mdash; silence gets read as "included."</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 6:</strong> Separate allowances (undefined scope) from contingency (risk reserve) in the estimate. Never blend the two.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 7:</strong> Confirm all markups (GCs, OH&amp;P, contingency) are applied sequentially against the running subtotal and clearly shown as separate line items.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 8:</strong> Track contingency drawdown by cause, not just by dollar amount, so the owner can see why the reserve is being consumed.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 9:</strong> Disclose discovered scope gaps to the owner in writing, even after GMP &mdash; do not silently absorb them through contingency without documentation.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 10:</strong> File the Basis of Estimate with the project record at every submission. It is the professional standard for what the number does and does not include.</div></div>
+</div>
+
+<h3>Online Resources</h3>
+<div class="card">
+<ul>
+<li><a href="https://web.aacei.org" target="_blank">AACE International</a> &mdash; Recommended Practices for cost estimate classification</li>
+<li><a href="https://www.pmi.org/about/ethics/code" target="_blank">PMI Code of Ethics and Professional Conduct</a> &mdash; pmi.org</li>
+<li><a href="https://www.pmi.org" target="_blank">Project Management Institute (PMI)</a> &mdash; PMBOK&reg; Guide, Code of Ethics, certifications</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="page-footer">
+ <strong>CM 4560: Construction Project Management &mdash; Week 3 · Class 6: Estimating, Cost Planning and Scope Alignment</strong> &nbsp;&middot;&nbsp; Kennesaw State University &nbsp;&middot;&nbsp; Fall 2026<br>⚠ Contains Answer Keys &amp; Teaching Notes — Not for Student Distribution
+</div>
+
+<script>
+
+function showTab(id){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelectorAll('.stab').forEach(b=>{
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+id+"'")){
+      b.classList.add('active');
+    }
+  });
+  window.scrollTo({top:document.querySelector('.section-tabs').offsetTop-16,behavior:'smooth'});
+}
+
+
+const gameRounds = [
+  {q:"Which estimate class has the WIDEST expected accuracy range and the LEAST project definition?",
+   opts:["Class 1","Class 3","Class 5","Class 2"], correct:2,
+   fb:"Class 5 (Order of Magnitude / ROM) has the widest accuracy range (roughly -50%/+100%) because it's based on minimal project definition — often just historical $/SF data."},
+  {q:"A project has 90–100% construction documents, a detailed takeoff, and firm subcontractor quotes. What estimate class is this?",
+   opts:["Class 5","Class 4","Class 2","Class 1"], correct:2,
+   fb:"That level of definition (30–75% maturity with firm quotes) is characteristic of a Class 2 (Construction Documents / Bid) estimate."},
+  {q:"A crew's labor hours to form and pour a concrete footing belong in which cost category?",
+   opts:["Direct Cost","General Conditions","Overhead & Profit","Contingency"], correct:0,
+   fb:"This is priced directly from the quantity takeoff and unit cost — it's the physical work itself, a direct cost."},
+  {q:"The project superintendent's salary for the duration of the job belongs in which cost category?",
+   opts:["Direct Cost","General Conditions","Contingency","Allowance"], correct:1,
+   fb:"Supervision is a project-level cost not tied to a specific quantity of work — a classic general condition."},
+  {q:"A $40,000 placeholder for owner-selected light fixtures not yet chosen belongs in which category?",
+   opts:["Contingency","Allowance","Direct Cost","Overhead & Profit"], correct:1,
+   fb:"This is real, included scope that isn't fully defined yet — that's an allowance, not a contingency."},
+  {q:"Direct cost subtotal is $10,000. Apply 10% General Conditions, then 10% OH&P, then 5% Contingency — sequentially. What is the total price (nearest dollar)?",
+   opts:["$12,500","$12,705","$11,500","$13,000"], correct:1,
+   fb:"$10,000 × 1.10 = $11,000 → × 1.10 = $12,100 → × 1.05 = $12,705. Markups compound against the running subtotal, not the original direct cost."},
+  {q:"A slab is 60 ft × 30 ft × 6\" thick. How many cubic yards of concrete are required?",
+   opts:["10 CY","33.3 CY","900 CY","20 CY"], correct:1,
+   fb:"60 × 30 = 1,800 SF × 0.5 ft = 900 CF ÷ 27 = 33.3 CY."},
+  {q:"A Basis of Estimate (BOE) primarily exists to:",
+   opts:["Make the estimate look more official to win the bid","Document assumptions, inclusions, and exclusions so everyone knows exactly what the number does and doesn't cover","Replace the need for a WBS","Justify a higher contingency percentage"], correct:1,
+   fb:"The BOE is the estimator's paper trail. It protects both the owner and the contractor by making scope boundaries explicit."},
+  {q:"You discover a $22,000 real scope item (shown on approved drawings) that was never priced, three weeks after the GMP was signed. What's the BEST first move?",
+   opts:["Quietly absorb it in contingency and say nothing to the owner","Bill it to the owner as a change order since it wasn't in the price","Document the discovery and disclose it to the owner in writing, noting it will be covered by GC-side reserves","Ignore it — it's under the contingency threshold so it doesn't matter"], correct:2,
+   fb:"The owner is entitled to know when their contingency is being used to cover an estimator's error, and since the owner already paid for this scope, it should not be billed as a change order — but it must be disclosed."},
+  {q:"Which PMI Code of Ethics value is MOST directly at stake when an estimator quietly pads contingency to hide a known estimating gap?",
+   opts:["Responsibility","Honesty","Fairness","All of these can apply, but Honesty is most direct"], correct:3,
+   fb:"Misrepresenting why a reserve is being consumed is fundamentally a Honesty violation, though Responsibility and Fairness are also implicated."}
+];
+let gIdx = 0, gScore = 0, gAnswered = false;
+
+function gRender(){
+  const r = gameRounds[gIdx];
+  document.getElementById('game-progress-fill').style.width = ((gIdx)/gameRounds.length*100)+'%';
+  document.getElementById('game-round-label').textContent = 'Round ' + (gIdx+1) + ' of ' + gameRounds.length;
+  document.getElementById('game-scenario').textContent = r.q;
+  const optsDiv = document.getElementById('game-opts');
+  optsDiv.innerHTML = '';
+  gAnswered = false;
+  r.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'game-opt';
+    btn.textContent = opt;
+    btn.onclick = () => gAnswer(i);
+    optsDiv.appendChild(btn);
+  });
+  const fb = document.getElementById('game-feedback');
+  fb.className = 'game-feedback';
+  fb.textContent = '';
+  document.getElementById('game-next-btn').classList.remove('show');
+}
+
+function gAnswer(i){
+  if(gAnswered) return;
+  gAnswered = true;
+  const r = gameRounds[gIdx];
+  const opts = document.querySelectorAll('.game-opt');
+  opts.forEach((btn, idx) => {
+    btn.classList.add('locked');
+    if(idx === r.correct) btn.classList.add('correct');
+    else if(idx === i) btn.classList.add('wrong');
+  });
+  const fb = document.getElementById('game-feedback');
+  if(i === r.correct){
+    gScore += 10;
+    fb.className = 'game-feedback show gf-correct';
+    fb.innerHTML = '<strong>Correct (+10 pts).</strong> ' + r.fb;
+  } else {
+    fb.className = 'game-feedback show gf-wrong';
+    fb.innerHTML = '<strong>Not quite.</strong> ' + r.fb;
+  }
+  document.getElementById('game-score').textContent = 'Score: ' + gScore;
+  const nextBtn = document.getElementById('game-next-btn');
+  nextBtn.classList.add('show');
+  nextBtn.textContent = (gIdx === gameRounds.length - 1) ? 'See Final Results' : 'Next Round →';
+}
+
+function gNext(){
+  gIdx++;
+  if(gIdx >= gameRounds.length){
+    gFinal();
+  } else {
+    gRender();
+  }
+}
+
+function gFinal(){
+  document.getElementById('game-progress-fill').style.width = '100%';
+  const body = document.getElementById('game-active-body');
+  const max = gameRounds.length * 10;
+  const pct = Math.round((gScore/max)*100);
+  let tier = 'Keep Studying';
+  if(pct >= 90) tier = 'Estimator — Ready for GMP';
+  else if(pct >= 75) tier = 'Solid PM Judgment';
+  else if(pct >= 60) tier = 'Getting There';
+  body.innerHTML = '<div class="game-final">' +
+    '<div class="score-big">' + gScore + ' / ' + max + '</div>' +
+    '<div class="tier">' + tier + ' — ' + pct + '%</div>' +
+    '<button class="game-restart" onclick="gStart()">Play Again</button>' +
+    '</div>';
+}
+
+function gStart(){
+  gIdx = 0; gScore = 0;
+  document.getElementById('game-score').textContent = 'Score: 0';
+  const body = document.getElementById('game-active-body');
+  body.innerHTML = '<div class="game-progress"><div class="game-progress-fill" id="game-progress-fill" style="width:0%"></div></div>' +
+    '<div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;" id="game-round-label"></div>' +
+    '<div class="game-scenario" id="game-scenario"></div>' +
+    '<div class="game-opts" id="game-opts"></div>' +
+    '<div class="game-feedback" id="game-feedback"></div>' +
+    '<button class="game-next" id="game-next-btn" onclick="gNext()">Next Round →</button>';
+  gRender();
+}
+document.addEventListener('DOMContentLoaded', gStart);
+
+</script>
+</body>
+</html>
