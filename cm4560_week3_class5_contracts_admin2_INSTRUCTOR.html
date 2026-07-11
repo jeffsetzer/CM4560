@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CM 4560: Construction Project Management | Week 3 · Class 5 — Contracts and Contract Administration 2 | INSTRUCTOR</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --navy:#1a2744;--navy2:#243260;--gold:#c9a84c;--gold2:#f0d080;--goldbg:#fdf6e3;
+  --inst:#7b2d00;--instbg:#fff4ee;--instbdr:#e07040;
+  --green:#1a6e3c;--greenbg:#eaf7ee;--red:#8b1a1a;--redbg:#fdf0f0;
+  --blue:#1a4080;--bluebg:#eef3fc;
+  --text:#1a1a2e;--muted:#5a6080;--border:#d8dce8;--white:#fff;--surface:#f7f8fc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);font-size:15px;line-height:1.65;}
+.inst-banner{background:var(--inst);color:#fff;text-align:center;padding:8px 20px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:static;z-index:200;}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#2a3870 100%);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hero::before{content:"§ CA-2";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:110px;font-weight:700;color:rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;pointer-events:none;white-space:nowrap;}
+.hero-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;}
+.pill.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.hero h1{font-size:30px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+.hero h1 span{color:var(--gold2);}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);max-width:640px;}
+.hero-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap;}
+.hero-stat label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:2px;}
+.hero-stat value{font-size:16px;font-weight:600;color:var(--gold2);font-family:'JetBrains Mono',monospace;}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.pw{max-width:1100px;margin:0 auto;padding:36px 32px 64px;}
+.inote{background:var(--instbg);border-left:4px solid var(--instbdr);border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:13.5px;}
+.inote .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--inst);margin-bottom:6px;}
+h2{font-size:22px;font-weight:700;color:var(--navy);margin:36px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+h3{font-size:16px;font-weight:600;color:var(--navy);margin:24px 0 10px;}
+h4{font-size:14px;font-weight:600;color:var(--blue);margin:16px 0 8px;}
+p{margin-bottom:12px;}ul,ol{padding-left:22px;margin-bottom:14px;}li{margin-bottom:6px;}
+.ref{display:inline-block;background:var(--navy);color:var(--gold2);font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;vertical-align:middle;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:16px 0;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:16px 0;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;table-layout:fixed;}
+th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:.04em;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;word-wrap:break-word;}
+tr:nth-child(even) td{background:var(--surface);}tr:hover td{background:var(--goldbg);}
+.ot{overflow-x:auto;}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;}
+.cd{background:#fde0cf;color:#7c3a00;border:1px solid #e09070;}
+.co{background:#d4edda;color:#155724;border:1px solid #7bc98e;}
+.a133{background:#d1ecf1;color:#0c5460;border:1px solid #7bd0de;}
+.a201{background:#e2d9f3;color:#432874;border:1px solid #a48cd4;}
+.notice{background:#cce5ff;color:#004085;border:1px solid #7ab4e8;}
+.waiver{background:#f8d7da;color:#721c24;border:1px solid #e08088;}
+.callout{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:14px;}
+.cg{background:var(--goldbg);border-left:4px solid var(--gold);}
+.cgr{background:var(--greenbg);border-left:4px solid #2ecc71;}
+.cr{background:var(--redbg);border-left:4px solid #c0392b;}
+.cb{background:var(--bluebg);border-left:4px solid #3498db;}
+.callout strong{display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+.actbox{background:var(--navy);color:#fff;border-radius:10px;padding:24px 28px;margin:24px 0;}
+.actbox h3{color:var(--gold2);margin-top:0;}
+.actmeta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.amitem{font-size:12px;color:rgba(255,255,255,.6);}
+.amitem span{color:var(--gold2);font-weight:600;}
+.qq{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin:14px 0;}
+.qnum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.qtext{font-weight:600;margin-bottom:12px;font-size:15px;}
+.ans{background:var(--greenbg);border-left:3px solid var(--green);padding:10px 14px;margin-top:10px;border-radius:0 6px 6px 0;font-size:13px;}
+.ans strong{color:var(--green);}
+.dw{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin:20px 0;overflow-x:auto;}
+.dw svg{max-width:100%;display:block;margin:0 auto;}
+.hwp{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 22px;margin:16px 0;}
+.hwnum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.tl{position:relative;padding-left:32px;border-left:2px solid var(--gold);margin:20px 0;}
+.tli{position:relative;padding:10px 0 10px 16px;}
+.tli::before{content:'';position:absolute;left:-36px;top:16px;width:10px;height:10px;background:var(--gold);border-radius:50%;}
+.ttime{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--gold);display:block;margin-bottom:2px;}
+.ttitle{font-weight:600;font-size:14px;color:var(--navy);}
+.tdesc{font-size:13px;color:var(--muted);}
+.objlist{list-style:none;padding:0;}
+.objitem{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.objitem:last-child{border-bottom:none;}
+.objnum{background:var(--gold);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chki{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.chki:last-child{border-bottom:none;}
+.chkb{width:18px;height:18px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:2px;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:20px;font-size:12px;margin-top:60px;}
+a{color:var(--blue);}
+/* Canonical site nav */
+.site-nav{background:var(--navy);position:sticky;top:0;z-index:150;border-bottom:2px solid var(--gold);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.625rem 1.5rem;gap:1rem;}
+.nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+.nav-logo-mark{width:34px;height:34px;border-radius:6px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;flex-shrink:0;}
+.nav-course{font-size:13px;font-weight:500;color:#fff;line-height:1.3}
+.nav-course span{font-size:11px;font-weight:400;color:rgba(255,255,255,.5);display:block}
+/* Canonical section tabs (pill tab bar) */
+.section-tabs{display:flex;gap:3px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:4px;margin:0 0 2rem;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.04);position:sticky;top:0;z-index:100;}
+.stab{flex:1 1 auto;min-width:100px;padding:8px 12px;border-radius:6px;font-size:12px;font-weight:500;text-align:center;color:var(--muted);cursor:pointer;border:none;background:none;transition:all .15s;white-space:nowrap;}
+.stab:hover{background:var(--surface);color:var(--navy)}
+.stab.active{background:var(--navy);color:#fff}
+/* Canonical footer */
+.page-footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:1.25rem;font-size:12px;margin-top:3rem;}
+.page-footer strong{color:rgba(255,255,255,.85)}
+.print-btn-row{display:flex;justify-content:flex-end;margin-bottom:-6px;}
+.print-btn{background:var(--gold);color:var(--navy);border:none;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.print-btn:hover{background:var(--gold2);}
+@media print{.site-nav,.section-tabs,.print-btn-row{display:none!important}.tab-content{display:none!important}.tab-content.active{display:block!important}}
+.snote{background:var(--goldbg);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:13.5px;color:#7a5e00;min-height:2.6em;}
+.snote .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
+.term-blank{border-bottom:1px dashed var(--border);min-height:2.4em;padding-bottom:6px;color:var(--muted);}
+/* Game widget */
+.game-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0;overflow:hidden;margin:16px 0;}
+.game-head{background:var(--navy);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.game-head h4{color:var(--gold2);margin:0;font-size:15px;}
+.game-score{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gold2);}
+.game-body{padding:26px;}
+.game-progress{height:6px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:20px;}
+.game-progress-fill{height:100%;background:var(--gold);transition:width .3s;}
+.game-scenario{font-size:15px;font-weight:500;margin-bottom:18px;color:var(--navy);}
+.game-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.game-opt{padding:14px 16px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;font-size:13.5px;text-align:left;font-family:inherit;transition:all .12s;}
+.game-opt:hover:not(.locked){border-color:var(--gold);background:var(--goldbg);}
+.game-opt.correct{background:var(--greenbg);border-color:#2ecc71;color:#155724;font-weight:600;}
+.game-opt.wrong{background:var(--redbg);border-color:#c0392b;color:#721c24;}
+.game-feedback{margin-top:16px;padding:14px 16px;border-radius:8px;font-size:13px;display:none;}
+.game-feedback.show{display:block;}
+.game-feedback.gf-correct{background:var(--greenbg);color:#155724;border-left:3px solid #2ecc71;}
+.game-feedback.gf-wrong{background:var(--redbg);color:#721c24;border-left:3px solid #c0392b;}
+.game-next{margin-top:16px;background:var(--navy);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:13px;cursor:pointer;font-family:inherit;display:none;}
+.game-next.show{display:inline-block;}
+.game-final{text-align:center;padding:30px 10px;}
+.game-final .score-big{font-size:44px;font-weight:700;color:var(--navy);font-family:'JetBrains Mono',monospace;}
+.game-final .tier{font-size:16px;font-weight:600;color:var(--gold);margin:8px 0 18px;text-transform:uppercase;letter-spacing:.06em;}
+.game-restart{background:var(--gold);color:var(--navy);border:none;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Course navigation">
+ <div class="nav-inner">
+ <a class="nav-logo" href="#">
+ <div class="nav-logo-mark">CM</div>
+ <div class="nav-course">CM 4560: Construction Project Management<span>Kennesaw State University</span></div>
+ </a>
+ </div>
+</nav>
+
+<div class="inst-banner">⚠ INSTRUCTOR EDITION — Contains Answer Keys &amp; Teaching Notes — Do Not Distribute to Students</div>
+
+<div class="hero">
+ <div class="hero-meta">
+ <span class="pill">CM 4560: Construction Project Management</span>
+ <span class="pill">Week 3 · Class 5</span>
+ <span class="pill">Tuesday, September 8, 2026</span>
+ <span class="pill gold">INSTRUCTOR EDITION</span>
+ </div>
+ <h1>Contracts &amp; Contract Administration 2: <span>Notice, Claims &amp; Change Directives</span></h1>
+ <p class="hero-sub">Administering the executed GMP contract in the field &mdash; notice-of-claim deadlines, change directives vs. change orders, subcontractor flow-down, and the professional judgment calls that protect (or waive) a company's contractual rights.</p>
+ <div class="hero-stats">
+ <div class="hero-stat"><label>Duration</label><value>75 min</value></div>
+ <div class="hero-stat"><label>Contract Form</label><value>AIA A133 / A201</value></div>
+ <div class="hero-stat"><label>Notice Window</label><value>10&ndash;21 days</value></div>
+ <div class="hero-stat"><label>Activities</label><value>2 + Game</value></div>
+ </div>
+</div>
+
+<div class="pw" style="padding-bottom:0;padding-top:1.5rem;">
+<div class="section-tabs" role="tablist" aria-label="Lecture sections">
+<button class="stab active" role="tab" onclick="showTab('overview')">📋 Overview</button>
+<button class="stab" role="tab" onclick="showTab('objectives')">🎯 Objectives</button>
+<button class="stab" role="tab" onclick="showTab('notes')">📖 Lecture Notes</button>
+<button class="stab" role="tab" onclick="showTab('terms')">📚 Key Terms</button>
+<button class="stab" role="tab" onclick="showTab('activities')">⚡ Activities</button>
+<button class="stab" role="tab" onclick="showTab('diagrams')">📐 Diagrams</button>
+<button class="stab" role="tab" onclick="showTab('ethics')">⚖️ Ethics &amp; Leadership</button>
+<button class="stab" role="tab" onclick="showTab('game')">🎮 Game</button>
+<button class="stab" role="tab" onclick="showTab('homework')">📝 Homework</button>
+<button class="stab" role="tab" onclick="showTab('resources')">🔗 Resources</button>
+<button class="stab" role="tab" onclick="showTab('deliverables')">✅ Deliverables</button>
+<button class="stab" role="tab" onclick="showTab('submit')">📤 Submit Deliverables Here</button>
+</div>
+</div>
+
+<div id="tab-overview" class="tab-content active">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Lesson 5 Overview</h2>
+<div class="inote"><div class="lbl">📋 Instructor Prep</div>Students often treat contract administration as "paperwork" rather than risk management. Bring a real (or realistic) excerpt of AIA A133 Article 4 / A201 §15 to class if possible, even just projected. The Activity #1 debrief is where the real learning happens &mdash; protect 12&ndash;15 minutes for it. Course runs Aug 25&ndash;Dec 3, 2026 (no class Nov 23&ndash;27, Thanksgiving break).</div>
+
+<h3>Timed Lecture Outline</h3>
+<div class="tl">
+<div class="tli"><span class="ttime">0:00&ndash;0:08 (8 min)</span><div class="ttitle">Hook &amp; Context</div><div class="tdesc">Real case: a CM crew proceeded on a verbal directive, never sent written notice, and lost a six-figure claim when the owner's attorney cited the contract's notice provision. Why contract administration is the "master switch" that protects a company's margin.</div></div>
+<div class="tli"><span class="ttime">0:08&ndash;0:20 (12 min)</span><div class="ttitle">GMP Contract Anatomy &mdash; AIA A133 + A201</div><div class="tdesc">How the owner-CM agreement and general conditions work together; where notice, claims, and changes-in-work provisions live in each document.</div></div>
+<div class="tli"><span class="ttime">0:20&ndash;0:32 (12 min)</span><div class="ttitle">Notice of Claim Provisions &amp; Deadlines</div><div class="tdesc">Typical 10/14/21-day notice windows, what triggers the clock, and the consequence of a missed deadline: waiver of the claim.</div></div>
+<div class="tli"><span class="ttime">0:32&ndash;0:44 (12 min)</span><div class="ttitle">Change Directives vs. Change Orders</div><div class="tdesc">Owner-directed change (work proceeds now, price/time TBD) vs. mutually agreed change (price and time already set). CM implications for each.</div></div>
+<div class="tli"><span class="ttime">0:44&ndash;0:56 (12 min)</span><div class="ttitle">Activity #1: "Notice or No Notice?"</div><div class="tdesc">Small groups classify 8 field scenarios. Debrief with emphasis on scenarios 5&ndash;7.</div></div>
+<div class="tli"><span class="ttime">0:56&ndash;1:04 (8 min)</span><div class="ttitle">Subcontractor Flow-Down Clauses</div><div class="tdesc">How a prime contract obligation (notice, claims, dispute resolution) passes down to trade subcontractors &mdash; and where CMs get burned when it doesn't.</div></div>
+<div class="tli"><span class="ttime">1:04&ndash;1:12 (8 min)</span><div class="ttitle">Ethics &amp; Leadership: Integrity in Notice &amp; Claims</div><div class="tdesc">PMI Code of Ethics applied to honesty in documentation, fairness in claims, and conflict management with the owner.</div></div>
+<div class="tli"><span class="ttime">1:12&ndash;1:15 (3 min)</span><div class="ttitle">Wrap-Up &amp; Homework</div><div class="tdesc">Review key points, assign homework, preview Lesson 6 (Bid Preparation, Buyout &amp; Scope Packaging).</div></div>
+</div>
+
+<div class="callout cg"><strong>⚡ Teaching Tip</strong>Students consistently confuse "we told them about it" with "we gave notice." Return to this distinction at least three times during the lecture &mdash; it is the single most-tested judgment call in construction contract administration and the crux of Activity #1.</div>
+</div>
+</div>
+
+<div id="tab-objectives" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Learning Objectives</h2>
+<p>By the end of Lesson 5, students will be able to:</p>
+
+<ul class="objlist">
+<li class="objitem"><span class="objnum">1</span><div>Explain the structure of a CM at Risk GMP contract (AIA A133 owner-CM agreement + A201 general conditions) and locate its notice, claims, and change provisions <span class="ref">A133 / A201</span></div></li>
+<li class="objitem"><span class="objnum">2</span><div>Distinguish a change directive from a change order and identify which applies in a given field scenario <span class="ref">A201 §7</span></div></li>
+<li class="objitem"><span class="objnum">3</span><div>Identify contractual notice-of-claim deadlines and describe the consequence of missing one: waiver of the claim <span class="ref">A201 §15.1</span></div></li>
+<li class="objitem"><span class="objnum">4</span><div>Apply subcontractor flow-down clauses to determine how a prime contract obligation passes through to a trade partner <span class="ref">A201 §5.3</span></div></li>
+<li class="objitem"><span class="objnum">5</span><div>Draft written notice language that reserves contractual rights without overstating or understating potential impact</div></li>
+<li class="objitem"><span class="objnum">6</span><div>Apply the PMI Code of Ethics and Professional Conduct to a live contract administration situation under time pressure</div></li>
+</ul>
+
+<div class="inote"><div class="lbl">📋 Bloom's Alignment</div>Objectives 1&ndash;3: Remember/Understand. Objectives 4&ndash;5: Apply/Analyze. Objective 6: Evaluate. Push hardest on Objective 6 in discussion &mdash; it's what separates a CM who manages contracts from one who just files them.</div>
+
+<h3>Career Relevance</h3>
+<div class="card">
+<h4>Why Every CM Needs Strong Contract Administration Skills</h4>
+<ul>
+<li><strong>Margin Protection:</strong> A missed notice deadline can convert a legitimate cost claim into an absorbed loss &mdash; directly hitting the project's (and company's) bottom line.</li>
+<li><strong>Owner Relationships:</strong> Contract administration done well &mdash; clear, timely, professional &mdash; builds trust with an owner rather than damaging it.</li>
+<li><strong>Subcontractor Management:</strong> CMs who understand flow-down clauses pass risk appropriately instead of absorbing subcontractor claims themselves.</li>
+<li><strong>Career Advancement:</strong> PMs trusted with contract administration are the ones handed larger, more complex projects.</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div id="tab-notes" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Lecture Notes &mdash; Contracts and Contract Administration 2</h2>
+
+<h3>Why Contract Administration Matters</h3>
+<p>A construction contract is not a document you read once at signing and file away. It is a living rulebook that governs every notice, change, dispute, and payment for the life of the project. Poor contract administration is one of the most common &mdash; and most preventable &mdash; ways a construction company erodes its own profit margin.</p>
+<div class="callout cb"><strong>🔑 Key Concept</strong>Contract administration is risk management in real time. Every notice deadline that passes unaddressed is a contractual right that may quietly disappear.</div>
+
+<h3>GMP Contract Anatomy &mdash; AIA A133 + A201</h3>
+<p>On the KSU Applied Technology &amp; Construction Innovation Center project, the CM at Risk delivery method uses two linked AIA documents:</p>
+<div class="ot"><table>
+<colgroup><col style="width:16%"><col style="width:42%"><col style="width:42%"></colgroup>
+<thead><tr><th>Document</th><th>Function</th><th>Key Sections for This Class</th></tr></thead>
+<tbody>
+<tr><td><span class="badge a133">A133</span></td><td>Owner&ndash;CM Agreement, establishes GMP, fee, and key dates</td><td>Art. 4 (Claims/Notice incorporated by reference to A201)</td></tr>
+<tr><td><span class="badge a201">A201</span></td><td>General Conditions &mdash; governs claims, changes in the work, subcontractor obligations</td><td>§5.3 (Subcontracts), §7 (Changes in the Work), §15.1 (Claims)</td></tr>
+</tbody>
+</table></div>
+<div class="callout cg"><strong>⚠ Teaching Tip</strong>Emphasize that A201 is not the CM's contract with the owner &mdash; it's incorporated by reference. Students often assume the A133 they signed contains everything; it doesn't. The general conditions do the heavy lifting on claims and changes.</div>
+
+<h3>Notice of Claim &mdash; Deadlines and Consequences</h3>
+<p>A "claim" is a demand for a change in the contract sum or contract time. Most standard-form contracts require the party making a claim to give <strong>written notice within a defined window</strong> &mdash; commonly 10, 14, or 21 calendar days &mdash; from when the claimant knew or should have known of the event giving rise to the claim.</p>
+<div class="callout cr"><strong>⚠ Critical Threshold &mdash; Notice Waiver</strong>Missing the contractual notice deadline typically waives the claim entirely, regardless of how legitimate the underlying cost or time impact is. The notice itself &mdash; not the final dollar figure &mdash; is what stops the clock. A CM can (and should) send notice before the cost impact is fully known, reserving the right to quantify later.</div>
+<div class="card">
+<h4>What Counts as Notice?</h4>
+<ol>
+<li><strong>In writing:</strong> A verbal conversation on site, however clear, typically does not satisfy a written notice requirement.</li>
+<li><strong>Timely:</strong> Sent within the contractual window from the triggering event, not from when the cost is finalized.</li>
+<li><strong>Specific:</strong> References the triggering event and the contract section under which the claim is made.</li>
+<li><strong>Rights-reserving:</strong> States that cost/time impact will follow once quantified &mdash; the CM does not need a final number to give valid notice.</li>
+</ol>
+</div>
+
+<h3>Change Directives vs. Change Orders</h3>
+<div class="ot"><table>
+<colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup>
+<thead><tr><th></th><th><span class="badge cd">Change Directive</span></th><th><span class="badge co">Change Order</span></th></tr></thead>
+<tbody>
+<tr><td><strong>Who authorizes it</strong></td><td>Owner/Architect, unilaterally</td><td>Mutual agreement &mdash; owner, architect, and CM all sign</td></tr>
+<tr><td><strong>Price &amp; time</strong></td><td>Not yet agreed &mdash; to be determined</td><td>Already agreed and stated in the document</td></tr>
+<tr><td><strong>Does work proceed?</strong></td><td>Yes &mdash; CM must proceed now</td><td>Yes, following execution</td></tr>
+<tr><td><strong>CM's obligation</strong></td><td>Perform the work AND preserve the right to claim cost/time via timely written notice</td><td>None further &mdash; terms are locked in</td></tr>
+</tbody>
+</table></div>
+<div class="callout cg"><strong>⚡ Memory Rule</strong>A change directive is a "proceed now, argue about price later &mdash; but argue on time" instrument. Missing the notice window on a change directive is one of the most common ways CMs lose money on otherwise well-run projects.</div>
+
+<h3>Subcontractor Flow-Down Clauses</h3>
+<p>Flow-down clauses bind a subcontractor to the same obligations the CM owes the owner under the prime contract &mdash; including notice deadlines. If a change directive affects a subcontractor's scope, the CM must confirm the subcontract properly flows down the same notice requirement, or risk being caught in the middle: bound to the owner's deadline while unable to get timely cost information from the sub.</p>
+<div class="callout cb"><strong>💡 CM Note</strong>A well-drafted flow-down clause protects the CM by mirroring the prime contract's notice timeline in every subcontract &mdash; often with a shorter internal deadline (e.g., 5 days) so the CM has time to compile and forward notice to the owner within the prime contract's window.</div>
+
+<h3>How Contract Administration Failures Drive Cost</h3>
+<div class="card">
+<h4>The Notice-to-Loss Chain</h4>
+<ol>
+<li><strong>Change Directive Issued</strong> &rarr; work must proceed under §7</li>
+<li><strong>Notice Window Opens</strong> &rarr; contractual clock starts (commonly 10&ndash;21 days)</li>
+<li><strong>Notice Missed or Informal</strong> &rarr; claim right waived under §15.1-style provisions</li>
+<li><strong>Cost Impact Realized</strong> &rarr; CM has no contractual basis to recover it</li>
+<li><strong>Margin Absorbed</strong> &rarr; cost comes directly out of company profit, not the owner's budget</li>
+</ol>
+<p style="margin-top:10px;"><em>A single missed notice on a mid-size change directive can cost a project tens of thousands of dollars in unrecoverable cost &mdash; money the company earned the right to claim but never asked for in writing.</em></p>
+</div>
+
+<div class="inote"><div class="lbl">📋 Talking Point</div>"A notice of claim doesn't have to be adversarial &mdash; it's a contractual mechanism, not an accusation." Ask students: if the CM sends notice but the cost turns out to be zero, what happens? Nothing &mdash; the notice simply expires unused. That reframes notice as low-risk, high-value discipline rather than an aggressive move.</div>
+</div>
+</div>
+
+<div id="tab-terms" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Key Terms &mdash; Lesson 5</h2>
+<div class="inote"><div class="lbl">📋 Note</div>Student edition has definitions blank for note-taking. These are the complete definitions for your reference.</div>
+<div class="grid2">
+<div class="card"><h4>Guaranteed Maximum Price (GMP)</h4><p>A contract sum the CM guarantees will not be exceeded, with savings typically shared with the owner per the agreement. <span class="ref">A133</span></p></div><div class="card"><h4>Change Directive</h4><p>A written order from the owner/architect directing a change in the work before price or time impact is agreed; work must proceed. <span class="ref">A201 §7.3</span></p></div><div class="card"><h4>Change Order</h4><p>A written instrument, signed by owner, architect, and CM, documenting an agreed change in the contract sum, contract time, or both. <span class="ref">A201 §7.2</span></p></div><div class="card"><h4>Notice of Claim</h4><p>Written notification, delivered within the contractual deadline, that a party intends to seek a change in contract sum or time. <span class="ref">A201 §15.1</span></p></div><div class="card"><h4>Flow-Down Clause</h4><p>Subcontract language binding the subcontractor to the same obligations (including notice deadlines) the CM owes the owner. <span class="ref">A201 §5.3</span></p></div><div class="card"><h4>Constructive Change</h4><p>An owner action or inaction (e.g., a directive, delay, or interference) that has the effect of a change even though no formal change order was issued.</p></div><div class="card"><h4>Waiver</h4><p>The loss of a contractual right &mdash; such as a claim &mdash; due to failure to comply with a required condition, most often a notice deadline.</p></div><div class="card"><h4>Duty to Mitigate</h4><p>The obligation of a party experiencing a delay or cost impact to take reasonable steps to minimize its extent before seeking recovery.</p></div><div class="card"><h4>Claim</h4><p>A demand or assertion by a party seeking an adjustment of contract sum or contract time, or other relief, arising under the contract. <span class="ref">A201 §15.1.1</span></p></div>
+</div>
+</div>
+</div>
+
+<div id="tab-activities" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>In-Class Activities</h2>
+
+<div class="actbox">
+<h3>Activity #1 &mdash; "Notice or No Notice?" Classification Challenge</h3>
+<div class="actmeta">
+<div class="amitem">Format: <span>Small groups (3&ndash;4 students)</span></div>
+<div class="amitem">Time: <span>12 minutes + debrief</span></div>
+<div class="amitem">Ordered: <span>Easy &rarr; Hard</span></div>
+</div>
+<p>Groups review each field scenario and decide: does this trigger a written notice-of-claim obligation under a standard A201-style contract? Debrief as a class &mdash; spend the most time on scenarios 5&ndash;7.</p>
+</div>
+<div class="inote"><div class="lbl">📋 Debrief Guide</div>Project scenarios one at a time; allow 30&ndash;45 seconds of group discussion before revealing the answer. Scenarios 1&ndash;4 are straightforward; 5&ndash;8 are genuinely trickier &mdash; scenarios 6 and 7 preview the subcontractor flow-down discussion.</div>
+
+<div class="grid2">
+<div class="qq"><div class="qnum">Scenario 1</div><div class="qtext">Owner's architect issues a formal Change Directive adding scope to the 2nd floor lab.</div><div class="ans"><strong>Notice required &mdash; §15.1/§7.3.</strong> Change directives directly trigger the CM's right (and need) to give notice preserving cost/time claims.</div></div>
+<div class="qq"><div class="qnum">Scenario 2</div><div class="qtext">Superintendent mentions to the architect in a hallway conversation that a recent directive "might cost a bit more."</div><div class="ans"><strong>Not sufficient notice.</strong> Verbal, informal mention does not satisfy a written notice requirement &mdash; this is exactly the trap in the scenario.</div></div>
+<div class="qq"><div class="qnum">Scenario 3</div><div class="qtext">A rain delay pushes the schedule back three days with no owner action involved.</div><div class="ans"><strong>Notice required if seeking time extension</strong> &mdash; most contracts require notice of weather delays within a set window (often 48&ndash;72 hours) to claim time impact, even though no cost is involved.</div></div>
+<div class="qq"><div class="qnum">Scenario 4</div><div class="qtext">CM discovers a minor dimensional error in the drawings that costs $200 to correct in the field.</div><div class="ans"><strong>Technically yes, practically no.</strong> The contract likely doesn't distinguish by dollar amount, but many CMs handle de minimis items informally with owner consent &mdash; a good discussion point on risk tolerance.</div></div>
+<div class="qq"><div class="qnum">Scenario 5</div><div class="qtext">Change Directive #4 issued 7 days ago; full cost impact from the mechanical subcontractor won't be known for two more weeks.</div><div class="ans"><strong>Notice required now, cost impact to follow.</strong> This is the exact class scenario &mdash; notice must be sent within the window regardless of whether the number is finalized.</div></div>
+<div class="qq"><div class="qnum">Scenario 6</div><div class="qtext">A change directive affects only the electrical subcontractor's scope; the CM's home office hasn't looped in the sub yet.</div><div class="ans"><strong>Flow-down notice required</strong> to the sub, and from the sub back to the CM, on a timeline that lets the CM still meet the owner's deadline. Preview of the flow-down discussion.</div></div>
+<div class="qq"><div class="qnum">Scenario 7</div><div class="qtext">CM believes the owner verbally waived the notice requirement "just this once" during a friendly site visit.</div><div class="ans"><strong>Risky &mdash; verify in writing.</strong> Verbal waivers of contractual rights are unreliable and often unenforceable; a prudent CM confirms any waiver in writing before relying on it.</div></div>
+<div class="qq"><div class="qnum">Scenario 8</div><div class="qtext">CM sends a notice of claim but has not yet mitigated an obvious cost driver identified in the field.</div><div class="ans"><strong>Notice is valid, but recovery may be reduced.</strong> Preview: the duty to mitigate can limit the amount ultimately recoverable even when notice was timely and proper.</div></div>
+</div>
+
+<div class="actbox" style="margin-top:32px;">
+<h3>Activity #2 &mdash; "The Missed Deadline" Case Discussion</h3>
+<div class="actmeta">
+<div class="amitem">Format: <span>Pairs or individual</span></div>
+<div class="amitem">Time: <span>8 minutes + 4 min debrief</span></div>
+</div>
+<p>A change directive is nine days old with a ten-day notice deadline. Students identify the contract implications and the CM's next steps.</p>
+</div>
+<div class="card">
+<h4>Scenario</h4>
+<p>You are Contract Administrator for the KSU Innovation Center. Thomas Brennan (project architect) issued Change Directive #4 for revised lab ventilation nine days ago. Your notice deadline is tomorrow. Mike Castellano's crew has already completed the work. No written notice has been sent yet.</p>
+<ol>
+<li>Has the company's right to claim cost/time on this directive been jeopardized? Why?</li>
+<li>What should happen in the next 24 hours?</li>
+<li>How would you word the notice if the final cost isn't known yet?</li>
+</ol>
+</div>
+<div class="ans"><strong>Answer Key:</strong><br>
+<strong>1.</strong> Yes &mdash; the window closes tomorrow and no notice has gone out. The right is not yet waived, but it is one day from being waived entirely.<br><br>
+<strong>2.</strong> Send written notice today, not tomorrow. Confirm the exact date the directive was issued and the exact contractual deadline. Loop in the estimator for a rough cost range even if not final. Document everything in the project notice log.<br><br>
+<strong>3.</strong> Something close to: <em>"Per A201 §15.1 and A133 Article 4, this letter serves as formal written notice of a potential claim for additional cost and/or time arising from Change Directive #4, issued [date]. A detailed cost and schedule impact analysis will follow within [X] days as required."</em> Reserves rights without committing to an unverified number.
+</div>
+</div>
+</div>
+
+<div id="tab-diagrams" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Visual Aids &amp; Diagrams</h2>
+
+<h3>Diagram 1: Notice-of-Claim Decision Process</h3>
+<div class="dw">
+<svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect width="880" height="360" fill="#f7f8fc" rx="12"/>
+<text x="440" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2744">Notice-of-Claim Decision Process</text>
+<rect x="320" y="50" width="240" height="46" rx="8" fill="#1a2744"/>
+<text x="440" y="69" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Event Occurs (e.g., Change Directive)</text>
+<text x="440" y="86" text-anchor="middle" font-size="10" fill="#c9a84c">Notice clock starts now</text>
+<line x1="440" y1="96" x2="440" y2="118" stroke="#1a2744" stroke-width="2" marker-end="url(#arr)"/>
+<polygon points="440,118 555,152 440,186 325,152" fill="#c9a84c" stroke="#a07830" stroke-width="1.5"/>
+<text x="440" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">Is this a claim under</text>
+<text x="440" y="162" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2744">the contract (§15.1)?</text>
+<line x1="555" y1="152" x2="630" y2="152" stroke="#1a2744" stroke-width="2" marker-end="url(#arr)"/>
+<text x="592" y="146" text-anchor="middle" font-size="10" fill="#1a6e3c" font-weight="700">YES</text>
+<rect x="630" y="126" width="200" height="54" rx="8" fill="#eaf7ee" stroke="#2ecc71" stroke-width="1.5"/>
+<text x="730" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#1a6e3c">Draft written notice</text>
+<text x="730" y="163" text-anchor="middle" font-size="11" font-weight="600" fill="#1a6e3c">within contract deadline</text>
+<line x1="440" y1="186" x2="440" y2="210" stroke="#1a2744" stroke-width="2" marker-end="url(#arr)"/>
+<text x="452" y="200" font-size="10" fill="#8b1a1a" font-weight="700">NO</text>
+<rect x="320" y="210" width="240" height="46" rx="8" fill="#fff4ee" stroke="#e07040" stroke-width="1.5"/>
+<text x="440" y="230" text-anchor="middle" font-size="11" font-weight="600" fill="#7b2d00">Handle informally with</text>
+<text x="440" y="244" text-anchor="middle" font-size="10" fill="#7b2d00">owner consent; document decision</text>
+<line x1="730" y1="180" x2="730" y2="210" stroke="#1a6e3c" stroke-width="1.5" stroke-dasharray="5,3"/>
+<rect x="605" y="210" width="250" height="60" rx="8" fill="#1a4080"/>
+<text x="730" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Send within window,</text>
+<text x="730" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">reserve rights, cost TBD</text>
+<text x="730" y="260" text-anchor="middle" font-size="9" fill="#cce5ff">A201 §15.1.2</text>
+<line x1="730" y1="270" x2="730" y2="300" stroke="#1a4080" stroke-width="2" marker-end="url(#arr2)"/>
+<rect x="605" y="300" width="250" height="46" rx="8" fill="#8b1a1a"/>
+<text x="730" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Missed window =</text>
+<text x="730" y="335" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">claim waived</text>
+<defs>
+<marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#1a2744"/></marker>
+<marker id="arr2" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#1a4080"/></marker>
+</defs>
+</svg>
+</div>
+
+<h3>Diagram 2: Change Directive vs. Change Order Paths</h3>
+<div class="dw">
+<svg viewBox="0 0 880 260" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect width="880" height="260" fill="#f7f8fc" rx="12"/>
+<text x="440" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2744">Two Paths to a Contract Change</text>
+<rect x="60" y="50" width="330" height="40" rx="8" fill="#1a2744"/>
+<text x="225" y="75" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Owner/Architect wants a change</text>
+<line x1="225" y1="90" x2="225" y2="112" stroke="#1a2744" stroke-width="2" marker-end="url(#pa2)"/>
+<rect x="60" y="112" width="330" height="50" rx="8" fill="#fde0cf" stroke="#e09070" stroke-width="1.5"/>
+<text x="225" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3a00">No time to negotiate price/time?</text>
+<text x="225" y="148" text-anchor="middle" font-size="10" fill="#7c3a00">Issue a Change Directive</text>
+<line x1="225" y1="162" x2="225" y2="184" stroke="#1a2744" stroke-width="2" marker-end="url(#pa2)"/>
+<rect x="60" y="184" width="330" height="50" rx="8" fill="#8b1a1a"/>
+<text x="225" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CM proceeds now.</text>
+<text x="225" y="221" text-anchor="middle" font-size="10" fill="#f8d7da">CM must send written notice to preserve cost/time claim.</text>
+<rect x="490" y="50" width="330" height="40" rx="8" fill="#1a2744"/>
+<text x="655" y="75" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Owner/Architect wants a change</text>
+<line x1="655" y1="90" x2="655" y2="112" stroke="#1a2744" stroke-width="2" marker-end="url(#pa2)"/>
+<rect x="490" y="112" width="330" height="50" rx="8" fill="#d4edda" stroke="#7bc98e" stroke-width="1.5"/>
+<text x="655" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#155724">Time to negotiate price/time first?</text>
+<text x="655" y="148" text-anchor="middle" font-size="10" fill="#155724">Negotiate and issue a Change Order</text>
+<line x1="655" y1="162" x2="655" y2="184" stroke="#1a2744" stroke-width="2" marker-end="url(#pa2)"/>
+<rect x="490" y="184" width="330" height="50" rx="8" fill="#1a6e3c"/>
+<text x="655" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">All parties sign.</text>
+<text x="655" y="221" text-anchor="middle" font-size="10" fill="#c7f0da">Price and time are locked &mdash; no separate notice needed.</text>
+<defs><marker id="pa2" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#1a2744"/></marker></defs>
+</svg>
+</div>
+
+<h3>Diagram 3: The Notice-to-Loss Chain</h3>
+<div class="dw">
+<svg viewBox="0 0 880 170" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+<rect width="880" height="170" fill="#f7f8fc" rx="12"/>
+<text x="440" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2744">How a Missed Notice Becomes a Real Cost</text>
+<rect x="14" y="48" width="150" height="76" rx="8" fill="#1a2744"/>
+<text x="89" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#c9a84c">① Directive Issued</text>
+<text x="89" y="90" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">Work must proceed</text>
+<text x="89" y="104" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)">A201 §7.3</text>
+<text x="182" y="90" text-anchor="middle" font-size="18" fill="#c9a84c">&rarr;</text>
+<rect x="196" y="48" width="150" height="76" rx="8" fill="#243260"/>
+<text x="271" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#c9a84c">② Clock Starts</text>
+<text x="271" y="90" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">10&ndash;21 day window</text>
+<text x="271" y="104" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)">A201 §15.1</text>
+<text x="364" y="90" text-anchor="middle" font-size="18" fill="#c9a84c">&rarr;</text>
+<rect x="378" y="48" width="150" height="76" rx="8" fill="#7b1a1a"/>
+<text x="453" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">③ Notice Missed</text>
+<text x="453" y="90" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">Verbal &ne; written</text>
+<text x="453" y="104" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)">Claim right waived</text>
+<text x="546" y="90" text-anchor="middle" font-size="18" fill="#c9a84c">&rarr;</text>
+<rect x="560" y="48" width="150" height="76" rx="8" fill="#1a4080"/>
+<text x="635" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">④ Cost Realized</text>
+<text x="635" y="90" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.8)">No contractual basis</text>
+<text x="635" y="104" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.5)">to recover</text>
+<text x="728" y="90" text-anchor="middle" font-size="18" fill="#c9a84c">&rarr;</text>
+<rect x="742" y="48" width="128" height="76" rx="8" fill="#1a6e3c"/>
+<text x="806" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⑤ Margin</text>
+<text x="806" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Absorbed</text>
+<text x="806" y="104" text-anchor="middle" font-size="9" fill="#90e0b4">Comes out of profit</text>
+<text x="440" y="150" text-anchor="middle" font-size="10" fill="#5a6080">A single missed notice on a mid-size change directive can cost tens of thousands in unrecoverable cost.</text>
+</svg>
+</div>
+
+</div>
+</div>
+
+<div id="tab-ethics" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Ethics, Leadership &amp; Professional Decision-Making</h2>
+<p>Notice, claims, and change directive decisions are where a construction PM's professional judgment is tested most directly &mdash; they involve real money, real deadlines, and real trust with the owner.</p>
+
+<h3>The PMI Code of Ethics and Professional Conduct</h3>
+<div class="grid2">
+<div class="card"><h4>Responsibility</h4><p>Owning the notice log. If a deadline is missed because it wasn't tracked, that's a professional failure to disclose and correct promptly &mdash; not something to quietly bury.</p></div>
+<div class="card"><h4>Respect</h4><p>Sending a notice of claim does not have to damage the owner relationship. A professionally worded, well-timed notice shows respect for the contract both parties signed.</p></div>
+<div class="card"><h4>Fairness</h4><p>Apply the same notice standards to your own subcontractors that the owner applies to you &mdash; don't exploit weaker sub contract language to deny a claim you'd expect the owner to honor for you.</p></div>
+<div class="card"><h4>Honesty</h4><p>A notice of claim states the real basis for the claim &mdash; no inflating potential impact to create negotiating room, and no understating it to avoid an uncomfortable conversation.</p></div>
+</div>
+<div class="callout cb"><strong>🔑 Source</strong>Project Management Institute, <em>Code of Ethics and Professional Conduct</em>. These four values apply directly to contract administration: a CM who inflates a claim's cost estimate to create negotiating leverage violates Honesty and Fairness even if no contract clause is technically broken.</div>
+
+<h3>Conflict Management in Notice &amp; Claims</h3>
+<p>The hardest part of contract administration often isn't knowing the deadline &mdash; it's delivering the notice to an owner representative without souring the relationship. A poorly worded notice can read as adversarial even when it's simply protecting a contractual right.</p>
+<div class="callout cr"><strong>⚠ The Standard Is Timely Disclosure, Not Confrontation</strong>PMI's ethical standards call for prompt, honest communication regardless of how uncomfortable the conversation feels. Coach students toward language that is direct about the contractual requirement while remaining collaborative in tone: "Per Article 4.3, we're providing notice to preserve our rights while we work together on the actual cost impact" lands very differently than a demand letter.</div>
+
+<h3>Leadership in Contract Administration</h3>
+<p>A CM who tracks notices diligently and communicates them professionally builds a reputation for integrity that follows them across projects and employers. Conversely, a CM who lets deadlines slip &mdash; or who sends aggressive, poorly-timed notices &mdash; damages both the company's finances and its standing with repeat owners.</p>
+
+<h3>A Simple Professional Decision-Making Framework</h3>
+<div class="card">
+<h4>Four Steps</h4>
+<ol>
+<li><strong>Identify the issue</strong> &mdash; name the deadline and the triggering event precisely, not vaguely</li>
+<li><strong>Consider stakeholders and PMI's four values</strong> &mdash; who is affected, and which value is most at stake?</li>
+<li><strong>Evaluate alternatives</strong> &mdash; what are the realistic options, including timing and tone of the notice?</li>
+<li><strong>Act and document</strong> &mdash; send the notice and create a contemporaneous record of why and when</li>
+</ol>
+</div>
+
+<h3>Discussion Questions</h3>
+<ol>
+<li>Is sending a notice of claim ever "too aggressive," or is the real risk always in sending it too late?</li>
+<li>How does a CM document a notice decision so it withstands scrutiny if the claim is later disputed?</li>
+<li>What's the difference between reserving rights honestly and using notice language as a negotiating threat &mdash; and why does the line matter ethically, not just legally?</li>
+</ol>
+
+<div class="inote"><div class="lbl">📋 Discussion Guide</div>Q1: Push students past "never send notice, it looks bad" &mdash; reframe: an unused notice costs nothing, a missed deadline costs real money. Q2: Look for answers mentioning dated notice logs, copies of correspondence, and internal cost-tracking memos retained per record-retention policy. Q3: The line is intent and truthfulness &mdash; reserving rights honestly states real facts and real deadlines; using notice as a threat inflates or fabricates impact to gain leverage, which violates Honesty.</div>
+</div>
+</div>
+
+<div id="tab-game" class="tab-content">
+<div class="pw">
+<h2>Reinforce It: Notice Deadline Showdown</h2>
+<p>Play through 8 rounds covering notice deadlines, change directives vs. change orders, flow-down clauses, and ethics &mdash; the same concepts from this lesson, in scenario form. Your score resets each time you replay.</p>
+<div class="game-wrap">
+<div class="game-head">
+<h4>🎮 Notice Deadline Showdown</h4>
+<div class="game-score" id="game-score">Score: 0</div>
+</div>
+<div class="game-body" id="game-active-body">
+<!-- populated by JS -->
+</div>
+</div>
+</div>
+</div>
+
+<div id="tab-homework" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Homework &mdash; Lesson 5</h2>
+<p><strong>Due:</strong> Before Lesson 6 | <strong>Total Points:</strong> 50</p>
+<div class="inote"><div class="lbl">📋 Grading Note</div>Problems 1&ndash;2: recall + application. Problem 3: high-value scenario requiring synthesis across notice, change directive, and flow-down concepts. Problem 4: professional reflection building judgment. Full answer keys included below each problem.</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 1 &mdash; Notice Identification (15 pts &mdash; 3 pts each)</div>
+<p>For each situation, state whether written notice of claim is required and cite the applicable contract concept.</p>
+<ol type="a">
+<li>A change directive is issued adding 400 SF of scope to the second floor.</li>
+<li>A three-day weather delay occurs with no owner action involved.</li>
+<li>The superintendent verbally tells the architect about a cost concern during a site walk.</li>
+<li>A subcontractor's scope is affected by a change directive, but the sub hasn't been notified.</li>
+<li>The CM believes the cost impact will be under $500 and decides not to bother with notice.</li>
+</ol>
+<div class="ans"><strong>Answer Key:</strong><br>
+a. <strong>Yes &mdash; §7.3/§15.1.</strong> Change directives are a classic notice trigger; work proceeds, cost/time TBD.<br>
+b. <strong>Yes, if a time extension will be sought</strong> &mdash; most contracts require notice of delay claims within a short window regardless of cost.<br>
+c. <strong>No &mdash; verbal mention is not written notice.</strong> This is the central trap of the lesson.<br>
+d. <strong>Yes, in both directions</strong> &mdash; flow-down notice must go from CM to sub and from sub back to CM in time to meet the owner's deadline.<br>
+e. <strong>Technically yes</strong> &mdash; most contracts don't set a dollar threshold for notice, though many CMs use judgment on very minor items with owner consent.
+</div>
+</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 2 &mdash; True/False with Justification (10 pts &mdash; 2 pts each)</div>
+<ol type="a">
+<li>A verbal conversation with the architect satisfies a written notice-of-claim requirement.</li>
+<li>A change directive requires mutual agreement on price before work can proceed.</li>
+<li>Missing a contractual notice deadline can waive an otherwise valid claim.</li>
+<li>Flow-down clauses only protect the owner, not the CM.</li>
+<li>A CM can send notice of claim before the final cost impact is known.</li>
+</ol>
+<div class="ans"><strong>Answer Key:</strong><br>
+a. <strong>FALSE</strong> &mdash; written notice is generally required; verbal notice is not sufficient.<br>
+b. <strong>FALSE</strong> &mdash; that describes a change order. A change directive proceeds without agreed price/time.<br>
+c. <strong>TRUE</strong> &mdash; this is the central risk covered in this lesson (A201 §15.1-style provisions).<br>
+d. <strong>FALSE</strong> &mdash; flow-down clauses protect the CM by passing obligations (and matching deadlines) down to subs.<br>
+e. <strong>TRUE</strong> &mdash; notice preserves the right; the cost figure can follow once quantified.
+</div>
+</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 3 &mdash; Case Study (20 pts)</div>
+<p>You are Contract Administrator on a $28.5M GMP project. The architect issues a change directive for revised HVAC ductwork routing. Nine days pass before anyone flags it to you. Your contract's notice window is 10 days.</p>
+<p><strong>Part A:</strong> What is your very next action, and why does timing matter here?</p>
+<p><strong>Part B:</strong> Draft the notice language you would send.</p>
+<p><strong>Part C:</strong> What internal process failure allowed this to almost slip through, and how would you fix it going forward?</p>
+<div class="ans"><strong>Answer Key:</strong><br>
+<strong>Part A:</strong> Send written notice today &mdash; one day remains before the window closes. Timing matters because the clock runs from the directive's issue date, not from when someone happened to flag it internally.<br><br>
+<strong>Part B:</strong> Something like: <em>"Per A201 §15.1 and A133 Article 4, this serves as formal written notice of a potential cost and/or time claim arising from Change Directive [#], issued [date]. A detailed impact analysis will follow within [X] business days."</em><br><br>
+<strong>Part C:</strong> The project lacked a live notice log tied to every change directive with automatic deadline tracking. Fix: maintain a running log (date issued, notice deadline, status) reviewed weekly, and require the person receiving any directive to log it same-day.
+</div>
+</div>
+
+<div class="hwp">
+<div class="hwnum">Problem 4 &mdash; Professional Reflection (5 pts)</div>
+<p>In 150&ndash;200 words, describe a real or plausible scenario where contract administration &mdash; notice, change directives, or subcontractor flow-down &mdash; affected a construction project. What went wrong or right? What would you do differently as the CM?</p>
+<div class="ans"><strong>Answer Key:</strong><br>
+<strong>Grading Rubric:</strong> Clear scenario (1 pt) + correct identification of the contract administration issue (1 pt) + specific consequences discussed (1 pt) + practical, PMI-values-grounded lesson drawn (1 pt) + professional writing quality (1 pt). Accept any plausible scenario. Look for evidence the student connects notice deadlines to real financial consequences and that CMs can catch them early with disciplined tracking.
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="tab-resources" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Resources &amp; References</h2>
+
+<h3>Primary References &mdash; Lesson 5</h3>
+<div class="card">
+<ul>
+<li><strong>AIA A133</strong> &mdash; Standard Form of Agreement Between Owner and CM at Risk (GMP basis)</li>
+<li><strong>AIA A201</strong> &mdash; General Conditions of the Contract for Construction, §5.3 (Subcontracts), §7 (Changes in the Work), §15.1 (Claims)</li>
+<li><strong>PMI, <em>A Guide to the Project Management Body of Knowledge (PMBOK&reg; Guide)</em></strong> &mdash; Procurement Management, Control Procurements process</li>
+<li><strong>PMI, <em>Code of Ethics and Professional Conduct</em></strong> &mdash; Responsibility, Respect, Fairness, Honesty</li>
+</ul>
+</div>
+
+<h3>Contract Administration Field Checklist</h3>
+<div class="callout cg"><strong>📥 Career Tool</strong>Print and use this checklist on any project involving change directives, claims, or subcontract administration. It documents your due diligence on notice and claims decisions.</div>
+<div class="card">
+<h4>✅ CM Contract Administration Checklist &mdash; Notice &amp; Claims</h4>
+<div class="chki"><div class="chkb"></div><div><strong>Step 1:</strong> Log every change directive the day it is received &mdash; issue date, description, and the exact contractual notice deadline.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 2:</strong> Confirm whether the item is a change directive (proceed now, price/time TBD) or a change order (already agreed).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 3:</strong> Identify the specific notice-of-claim provision governing this contract (section number, not just "the contract").</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 4:</strong> Draft and send written notice within the deadline, reserving rights even if the cost isn't finalized.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 5:</strong> Identify whether any subcontractor scope is affected; confirm flow-down notice is sent to and from the sub in time.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 6:</strong> Request a cost/schedule impact estimate from the estimator or scheduler, even a rough range, for follow-up.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 7:</strong> Track the notice log weekly &mdash; flag any deadline within 5 days as high priority.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 8:</strong> Document the final resolution (change order executed, claim withdrawn, or dispute escalated) in the project file.</div></div>
+</div>
+
+<h3>Online Resources</h3>
+<div class="card">
+<ul>
+<li><a href="https://www.pmi.org/about/ethics/guidelines" target="_blank">PMI Code of Ethics and Professional Conduct</a> &mdash; full standard, free from PMI</li>
+<li><a href="https://www.aiacontracts.org" target="_blank">AIA Contract Documents</a> &mdash; A133/A201 family overview</li>
+<li><a href="https://www.consensusdocs.org" target="_blank">ConsensusDocs</a> &mdash; alternative standard-form contract family for comparison</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="tab-deliverables" class="tab-content">
+<div class="pw">
+<div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Deliverables Checklist &mdash; Lesson 5</h2>
+<p>Students use this checklist to confirm they have everything completed and ready before the submission deadline.</p>
+<div class="card">
+<div class="chki"><div class="chkb"></div><div><strong>Key Terms</strong> &mdash; all 9 definitions completed in their own words (Key Terms tab)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Activity #1 &mdash; "Notice or No Notice?"</strong> &mdash; answer and reasoning for all 8 scenarios (Activities tab)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Activity #2 &mdash; "The Missed Deadline"</strong> &mdash; answers to all 3 case questions (Activities tab)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Ethics &amp; Leadership Discussion Questions</strong> &mdash; answers to all 3 discussion questions (Ethics &amp; Leadership tab)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Homework Problem 1</strong> &mdash; Notice Identification (a&ndash;e)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Homework Problem 2</strong> &mdash; True/False with Justification (a&ndash;e)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Homework Problem 3</strong> &mdash; Case Study (Parts A, B, C)</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Homework Problem 4</strong> &mdash; Professional Reflection (150&ndash;200 words)</div></div>
+</div>
+<div class="inote"><div class="lbl">📋 Grading Note</div>This checklist mirrors the graded components in the Homework tab plus the completion-based Key Terms, Activities, and Ethics discussion answers. Consider a simple complete/incomplete check on the non-homework items, with full point grading reserved for the Homework tab's 50 points.</div>
+</div>
+</div>
+
+<div id="tab-submit" class="tab-content">
+<div class="pw">
+<h2>Submit Deliverables Here</h2>
+<div class="card">
+<h3 style="margin-top:0;">Submission Instructions (Student-Facing)</h3>
+<p>Submit via D2L in the Activities tab in the associated assignment.</p>
+<p><strong>Deadline:</strong> Sunday, September 13, 2026 &mdash; 11:59 PM</p>
+</div>
+<div class="inote"><div class="lbl">📋 Instructor Note</div>Confirm the D2L assignment link for Lesson 5 is live under the Activities tab before class and matches this deadline. The Sunday-night deadline gives students the full week following class to complete Key Terms, both Activities, Ethics discussion questions, and Homework.</div>
+</div>
+</div>
+
+<div class="page-footer">
+ <strong>CM 4560: Construction Project Management &mdash; Week 3 · Class 5: Contracts and Contract Administration 2</strong> &nbsp;&middot;&nbsp; Kennesaw State University &nbsp;&middot;&nbsp; Fall 2026<br>⚠ Contains Answer Keys &amp; Teaching Notes — Not for Student Distribution
+</div>
+
+<script>
+
+function showTab(id){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelectorAll('.stab').forEach(b=>{
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+id+"'")){
+      b.classList.add('active');
+    }
+  });
+  window.scrollTo({top:document.querySelector('.section-tabs').offsetTop-16,behavior:'smooth'});
+}
+
+const gameRounds = [
+  {q:"A change directive is issued. When does the notice clock start?",
+   opts:["When the CM finalizes the cost","The day the directive is issued","When the owner approves the cost","At project closeout"], correct:1,
+   fb:"The clock starts on the triggering event — the directive's issue date — not when a number is ready."},
+  {q:"Which of the following satisfies a written notice-of-claim requirement?",
+   opts:["A verbal mention on a site walk","A formal letter citing the contract section, sent within the deadline","Bringing it up at the next OAC meeting, whenever that is","A text message with no contract reference"], correct:1,
+   fb:"Only a specific, timely, written notice referencing the contract satisfies most notice provisions."},
+  {q:"A change directive differs from a change order because:",
+   opts:["A change directive requires mutual agreement first","A change order lets work proceed before price is set","A change directive lets work proceed before price/time is agreed","There is no real difference"], correct:2,
+   fb:"Change directives are owner-issued; work proceeds now, price/time follow. Change orders lock in price/time before/at execution."},
+  {q:"What happens if a CM misses the contractual notice deadline?",
+   opts:["Nothing, as long as the cost is reasonable","The claim is typically waived","The owner must still pay","The deadline automatically extends"], correct:1,
+   fb:"Missing the deadline typically waives the claim regardless of how legitimate the cost impact is."},
+  {q:"A flow-down clause in a subcontract does what?",
+   opts:["Lowers the subcontractor's price","Passes prime contract obligations, like notice deadlines, down to the sub","Removes the sub's claim rights entirely","Only applies to safety requirements"], correct:1,
+   fb:"Flow-down clauses bind subs to the same obligations, including notice timing, that the CM owes the owner."},
+  {q:"The final cost figure for a claim isn't ready yet. What should the CM do?",
+   opts:["Wait until it's final before sending anything","Send notice within the deadline, reserving rights, cost to follow","Skip notice since the number isn't ready","Ask the owner informally what they think is fair"], correct:1,
+   fb:"Notice should be sent within the deadline regardless — the exact cost can follow in a supplemental submission."},
+  {q:"Which PMI ethical value is most directly tested by inflating a claim's cost estimate to create negotiating room?",
+   opts:["Respect","Responsibility","Fairness","Honesty"], correct:3,
+   fb:"Honesty requires stating the real basis for a claim — not inflating or understating it strategically."},
+  {q:"Why does a live notice log matter on a project?",
+   opts:["It's required paperwork with no real use","It tracks deadlines so none are missed by accident","It replaces the need for written notices","It's only useful at project closeout"], correct:1,
+   fb:"A disciplined notice log is what actually prevents the scenario in this lesson — a deadline slipping through unnoticed."}
+];
+let gIdx = 0, gScore = 0, gAnswered = false;
+
+function gRender(){
+  const r = gameRounds[gIdx];
+  document.getElementById('game-progress-fill').style.width = ((gIdx)/gameRounds.length*100)+'%';
+  document.getElementById('game-round-label').textContent = 'Round ' + (gIdx+1) + ' of ' + gameRounds.length;
+  document.getElementById('game-scenario').textContent = r.q;
+  const optsDiv = document.getElementById('game-opts');
+  optsDiv.innerHTML = '';
+  gAnswered = false;
+  r.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'game-opt';
+    btn.textContent = opt;
+    btn.onclick = () => gAnswer(i);
+    optsDiv.appendChild(btn);
+  });
+  const fb = document.getElementById('game-feedback');
+  fb.className = 'game-feedback';
+  fb.textContent = '';
+  document.getElementById('game-next-btn').classList.remove('show');
+}
+
+function gAnswer(i){
+  if(gAnswered) return;
+  gAnswered = true;
+  const r = gameRounds[gIdx];
+  const opts = document.querySelectorAll('.game-opt');
+  opts.forEach((btn, idx) => {
+    btn.classList.add('locked');
+    if(idx === r.correct) btn.classList.add('correct');
+    else if(idx === i) btn.classList.add('wrong');
+  });
+  const fb = document.getElementById('game-feedback');
+  if(i === r.correct){
+    gScore += 10;
+    fb.className = 'game-feedback show gf-correct';
+    fb.innerHTML = '<strong>Correct (+10 pts).</strong> ' + r.fb;
+  } else {
+    fb.className = 'game-feedback show gf-wrong';
+    fb.innerHTML = '<strong>Not quite.</strong> ' + r.fb;
+  }
+  document.getElementById('game-score').textContent = 'Score: ' + gScore;
+  const nextBtn = document.getElementById('game-next-btn');
+  nextBtn.classList.add('show');
+  nextBtn.textContent = (gIdx === gameRounds.length - 1) ? 'See Final Results' : 'Next Round →';
+}
+
+function gNext(){
+  gIdx++;
+  if(gIdx >= gameRounds.length){
+    gFinal();
+  } else {
+    gRender();
+  }
+}
+
+function gFinal(){
+  document.getElementById('game-progress-fill').style.width = '100%';
+  const body = document.getElementById('game-active-body');
+  const max = gameRounds.length * 10;
+  const pct = Math.round((gScore/max)*100);
+  let tier = 'Keep Studying';
+  if(pct >= 90) tier = 'Contract Administration Expert';
+  else if(pct >= 75) tier = 'Solid PM Judgment';
+  else if(pct >= 60) tier = 'Getting There';
+  body.innerHTML = '<div class="game-final">' +
+    '<div class="score-big">' + gScore + ' / ' + max + '</div>' +
+    '<div class="tier">' + tier + ' — ' + pct + '%</div>' +
+    '<button class="game-restart" onclick="gStart()">Play Again</button>' +
+    '</div>';
+}
+
+function gStart(){
+  gIdx = 0; gScore = 0;
+  document.getElementById('game-score').textContent = 'Score: 0';
+  const body = document.getElementById('game-active-body');
+  body.innerHTML = '<div class="game-progress"><div class="game-progress-fill" id="game-progress-fill" style="width:0%"></div></div>' +
+    '<div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;" id="game-round-label"></div>' +
+    '<div class="game-scenario" id="game-scenario"></div>' +
+    '<div class="game-opts" id="game-opts"></div>' +
+    '<div class="game-feedback" id="game-feedback"></div>' +
+    '<button class="game-next" id="game-next-btn" onclick="gNext()">Next Round →</button>';
+  gRender();
+}
+document.addEventListener('DOMContentLoaded', gStart);
+
+</script>
+</body>
+</html>
