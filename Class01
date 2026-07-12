@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CM 4560: Construction Project Management | Week 1 · Class 1 — Project Initiation, Setup &amp; the PMP | INSTRUCTOR</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --navy:#1a2744;--navy2:#243260;--gold:#c9a84c;--gold2:#f0d080;--goldbg:#fdf6e3;
+  --inst:#7b2d00;--instbg:#fff4ee;--instbdr:#e07040;
+  --green:#1a6e3c;--greenbg:#eaf7ee;--red:#8b1a1a;--redbg:#fdf0f0;
+  --blue:#1a4080;--bluebg:#eef3fc;
+  --text:#1a1a2e;--muted:#5a6080;--border:#d8dce8;--white:#fff;--surface:#f7f8fc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);font-size:15px;line-height:1.65;}
+.inst-banner{background:var(--inst);color:#fff;text-align:center;padding:8px 20px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:static;z-index:200;}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#2a3870 100%);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden;}
+.hero::before{content:"§ INIT/PMP";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:110px;font-weight:700;color:rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;pointer-events:none;white-space:nowrap;}
+.hero-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;}
+.pill.gold{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.hero h1{font-size:30px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+.hero h1 span{color:var(--gold2);}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.7);max-width:640px;}
+.hero-stats{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap;}
+.hero-stat label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:2px;}
+.hero-stat value{font-size:16px;font-weight:600;color:var(--gold2);font-family:'JetBrains Mono',monospace;}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.pw{max-width:1100px;margin:0 auto;padding:36px 32px 64px;}
+.inote{background:var(--instbg);border-left:4px solid var(--instbdr);border-radius:0 8px 8px 0;padding:14px 18px;margin:20px 0;font-size:13.5px;}
+.inote .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--inst);margin-bottom:6px;}
+h2{font-size:22px;font-weight:700;color:var(--navy);margin:36px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+h3{font-size:16px;font-weight:600;color:var(--navy);margin:24px 0 10px;}
+h4{font-size:14px;font-weight:600;color:var(--blue);margin:16px 0 8px;}
+p{margin-bottom:12px;}ul,ol{padding-left:22px;margin-bottom:14px;}li{margin-bottom:6px;}
+.ref{display:inline-block;background:var(--navy);color:var(--gold2);font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;vertical-align:middle;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:16px 0;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin:16px 0;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px;table-layout:fixed;}
+th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:.04em;}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;word-wrap:break-word;}
+tr:nth-child(even) td{background:var(--surface);}tr:hover td{background:var(--goldbg);}
+.ot{overflow-x:auto;}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;}
+.chr{background:#fff3cd;color:#7b4f00;border:1px solid #e6c87a;}
+.pmp{background:#d1ecf1;color:#0c5460;border:1px solid #7bd0de;}
+.auth{background:#d4edda;color:#155724;border:1px solid #7bc98e;}
+.both{background:#e2d9f3;color:#432874;border:1px solid #a48cd4;}
+.callout{border-radius:8px;padding:14px 18px;margin:16px 0;font-size:14px;}
+.cg{background:var(--goldbg);border-left:4px solid var(--gold);}
+.cgr{background:var(--greenbg);border-left:4px solid #2ecc71;}
+.cr{background:var(--redbg);border-left:4px solid #c0392b;}
+.cb{background:var(--bluebg);border-left:4px solid #3498db;}
+.callout strong{display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+.actbox{background:var(--navy);color:#fff;border-radius:10px;padding:24px 28px;margin:24px 0;}
+.actbox h3{color:var(--gold2);margin-top:0;}
+.actmeta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.amitem{font-size:12px;color:rgba(255,255,255,.6);}
+.amitem span{color:var(--gold2);font-weight:600;}
+.qq{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin:14px 0;}
+.qnum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.qtext{font-weight:600;margin-bottom:12px;font-size:15px;}
+.ans{background:var(--greenbg);border-left:3px solid var(--green);padding:10px 14px;margin-top:10px;border-radius:0 6px 6px 0;font-size:13px;}
+.ans strong{color:var(--green);}
+.dw{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;margin:20px 0;overflow-x:auto;}
+.dw svg{max-width:100%;display:block;margin:0 auto;}
+.hwp{background:var(--white);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 22px;margin:16px 0;}
+.hwnum{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.tl{position:relative;padding-left:32px;border-left:2px solid var(--gold);margin:20px 0;}
+.tli{position:relative;padding:10px 0 10px 16px;}
+.tli::before{content:'';position:absolute;left:-36px;top:16px;width:10px;height:10px;background:var(--gold);border-radius:50%;}
+.ttime{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--gold);display:block;margin-bottom:2px;}
+.ttitle{font-weight:600;font-size:14px;color:var(--navy);}
+.tdesc{font-size:13px;color:var(--muted);}
+.objlist{list-style:none;padding:0;}
+.objitem{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.objitem:last-child{border-bottom:none;}
+.objnum{background:var(--gold);color:var(--navy);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chki{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.chki:last-child{border-bottom:none;}
+.chkb{width:18px;height:18px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:2px;}
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:20px;font-size:12px;margin-top:60px;}
+a{color:var(--blue);}
+/* Canonical site nav */
+.site-nav{background:var(--navy);position:sticky;top:0;z-index:150;border-bottom:2px solid var(--gold);}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.625rem 1.5rem;gap:1rem;}
+.nav-logo{display:flex;align-items:center;gap:.625rem;text-decoration:none}
+.nav-logo-mark{width:34px;height:34px;border-radius:6px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#fff;flex-shrink:0;}
+.nav-course{font-size:13px;font-weight:500;color:#fff;line-height:1.3}
+.nav-course span{font-size:11px;font-weight:400;color:rgba(255,255,255,.5);display:block}
+/* Canonical section tabs (pill tab bar) */
+.section-tabs{display:flex;gap:3px;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:4px;margin:0 0 2rem;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.04);position:sticky;top:0;z-index:100;}
+.stab{flex:1 1 auto;min-width:100px;padding:8px 12px;border-radius:6px;font-size:12px;font-weight:500;text-align:center;color:var(--muted);cursor:pointer;border:none;background:none;transition:all .15s;white-space:nowrap;}
+.stab:hover{background:var(--surface);color:var(--navy)}
+.stab.active{background:var(--navy);color:#fff}
+/* Canonical footer */
+.page-footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:1.25rem;font-size:12px;margin-top:3rem;}
+.page-footer strong{color:rgba(255,255,255,.85)}
+.print-btn-row{display:flex;justify-content:flex-end;margin-bottom:-6px;}
+.print-btn{background:var(--gold);color:var(--navy);border:none;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;}
+.print-btn:hover{background:var(--gold2);}
+@media print{.site-nav,.section-tabs,.print-btn-row{display:none!important}.tab-content{display:none!important}.tab-content.active{display:block!important}}
+.snote{background:var(--goldbg);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:13.5px;color:#7a5e00;min-height:2.6em;}
+.snote .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
+.term-blank{border-bottom:1px dashed var(--border);min-height:2.4em;padding-bottom:6px;color:var(--muted);}
+.wline{border-bottom:1px dashed var(--border);height:1.7em;margin-top:6px;}
+/* Game widget */
+.game-wrap{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:0;overflow:hidden;margin:16px 0;}
+.game-head{background:var(--navy);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.game-head h4{color:var(--gold2);margin:0;font-size:15px;}
+.game-score{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gold2);}
+.game-body{padding:26px;}
+.game-progress{height:6px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:20px;}
+.game-progress-fill{height:100%;background:var(--gold);transition:width .3s;}
+.game-scenario{font-size:15px;font-weight:500;margin-bottom:18px;color:var(--navy);}
+.game-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.game-opt{padding:14px 16px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);cursor:pointer;font-size:13.5px;text-align:left;font-family:inherit;transition:all .12s;}
+.game-opt:hover:not(.locked){border-color:var(--gold);background:var(--goldbg);}
+.game-opt.correct{background:var(--greenbg);border-color:#2ecc71;color:#155724;font-weight:600;}
+.game-opt.wrong{background:var(--redbg);border-color:#c0392b;color:#721c24;}
+.game-feedback{margin-top:16px;padding:14px 16px;border-radius:8px;font-size:13px;display:none;}
+.game-feedback.show{display:block;}
+.game-feedback.gf-correct{background:var(--greenbg);color:#155724;border-left:3px solid #2ecc71;}
+.game-feedback.gf-wrong{background:var(--redbg);color:#721c24;border-left:3px solid #c0392b;}
+.game-next{margin-top:16px;background:var(--navy);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-size:13px;cursor:pointer;font-family:inherit;display:none;}
+.game-next.show{display:inline-block;}
+.game-final{text-align:center;padding:30px 10px;}
+.game-final .score-big{font-size:44px;font-weight:700;color:var(--navy);font-family:'JetBrains Mono',monospace;}
+.game-final .tier{font-size:16px;font-weight:600;color:var(--gold);margin:8px 0 18px;text-transform:uppercase;letter-spacing:.06em;}
+.game-restart{background:var(--gold);color:var(--navy);border:none;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+
+</style>
+</head>
+<body>
+<nav aria-label="Course navigation" class="site-nav">
+<div class="nav-inner">
+<a class="nav-logo" href="#">
+<div class="nav-logo-mark">CM</div>
+<div class="nav-course">CM 4560: Construction Project Management<span>Kennesaw State University</span></div>
+</a>
+</div>
+</nav>
+<div class="inst-banner">⚠ INSTRUCTOR EDITION — Contains Answer Keys &amp; Teaching Notes — Do Not Distribute to Students</div>
+<div class="hero">
+<div class="hero-meta">
+<span class="pill">CM 4560: Construction Project Management</span>
+<span class="pill">Week 1 · Class 1</span>
+<span class="pill">Tuesday, August 25, 2026</span>
+<span class="pill gold">INSTRUCTOR EDITION</span>
+</div>
+<h1>Project Initiation, Setup &amp; <span>the Project Management Plan</span></h1>
+<p class="hero-sub">How a signed contract becomes an authorized, organized project — the charter, the setup essentials, and the PMP that governs everything after.</p>
+<div class="hero-stats">
+<div class="hero-stat"><label>Duration</label><value>75 min</value></div>
+<div class="hero-stat"><label>Process Groups</label><value>5</value></div>
+<div class="hero-stat"><label>PMP Subsidiary Plans</label><value>8</value></div>
+<div class="hero-stat"><label>Activities</label><value>2 + Game</value></div>
+</div>
+</div>
+<div class="pw" style="padding-bottom:0;padding-top:1.5rem;">
+<div aria-label="Lecture sections" class="section-tabs" role="tablist">
+<button class="stab active" onclick="showTab('overview')" role="tab">📋 Overview</button>
+<button class="stab" onclick="showTab('objectives')" role="tab">🎯 Objectives</button>
+<button class="stab" onclick="showTab('notes')" role="tab">📖 Lecture Notes</button>
+<button class="stab" onclick="showTab('terms')" role="tab">📚 Key Terms</button>
+<button class="stab" onclick="showTab('activities')" role="tab">⚡ Activities</button>
+<button class="stab" onclick="showTab('diagrams')" role="tab">📐 Diagrams</button>
+<button class="stab" onclick="showTab('ethics')" role="tab">⚖️ Ethics &amp; Leadership</button>
+<button class="stab" onclick="showTab('game')" role="tab">🎮 Game</button>
+<button class="stab" onclick="showTab('homework')" role="tab">📝 Homework</button>
+<button class="stab" onclick="showTab('resources')" role="tab">🔗 Resources</button>
+<button class="stab" onclick="showTab('deliverables')" role="tab">✅ Deliverables</button>
+<button class="stab" onclick="showTab('submit')" role="tab">📤 Submit Deliverables Here</button>
+</div>
+</div>
+<div class="tab-content active" id="tab-overview">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Class 1 Overview</h2>
+<div class="inote"><div class="lbl">📋 Instructor Prep</div>This is the tone-setting class of the semester — everything downstream (stakeholder analysis, scope/WBS, scheduling, cost control) refers back to the charter and PMP built conceptually here. Students routinely treat "charter" and "PMP" as interchangeable; the Charter vs. PMP comparison table and Activity #1 exist specifically to break that habit early. Protect 10–12 minutes for the Activity #1 debrief — that's where the distinction actually clicks. Course runs Aug 25–Dec 3, 2026 (no class Nov 23–27, Thanksgiving break).</div>
+<h3>Timed Lecture Outline</h3>
+<div class="tl">
+<div class="tli"><span class="ttime">0:00–0:08 (8 min)</span><div class="ttitle">Hook &amp; Context</div><div class="tdesc">Real case: a team skipped chartering and went straight to scheduling — disagreement over "success" surfaces at 60% complete, triggering rework and a schedule claim. Why Class 1 is the foundation every other class builds on.</div></div>
+<div class="tli"><span class="ttime">0:08–0:20 (12 min)</span><div class="ttitle">The Project Life Cycle &amp; Process Groups</div><div class="tdesc">PMBOK's five process groups mapped onto a construction project's phases: pursuit/preconstruction, award, mobilization, construction, closeout.</div></div>
+<div class="tli"><span class="ttime">0:20–0:35 (15 min)</span><div class="ttitle">Project Initiation &amp; the Project Charter</div><div class="tdesc">Required charter elements, PM authority thresholds, the KSU case example, charter authority table.</div></div>
+<div class="tli"><span class="ttime">0:35–0:50 (15 min)</span><div class="ttitle">Project Setup Essentials</div><div class="tdesc">Team mobilization, kickoff meeting agenda, document control systems, communication protocols.</div></div>
+<div class="tli"><span class="ttime">0:50–1:00 (10 min)</span><div class="ttitle">Activity #1: "Charter or PMP?" Debrief</div><div class="tdesc">Small groups sort 8 real statements. Debrief as a class — spend the most time on items 4 and 5, which are deliberately ambiguous.</div></div>
+<div class="tli"><span class="ttime">1:00–1:09 (9 min)</span><div class="ttitle">The Project Management Plan (PMP)</div><div class="tdesc">Subsidiary plans overview, charter-vs-PMP comparison, why the PMP is a living document rather than a signed-once authorization.</div></div>
+<div class="tli"><span class="ttime">1:09–1:15 (6 min)</span><div class="ttitle">Ethics &amp; Leadership: Integrity in Chartering</div><div class="tdesc">PMI Code of Ethics and Professional Conduct applied to honest success-criteria setting and authority boundaries. Wrap-up and homework assignment.</div></div>
+</div>
+<div class="callout cg"><strong>⚡ Teaching Tip</strong>Students will want to treat the charter as a longer document than it should be. Keep repeating: if it takes more than five minutes to read, it's PMP content, not charter content. That single rule resolves most of the sorting-activity disagreements.</div>
+</div>
+</div>
+<div class="tab-content" id="tab-objectives">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Learning Objectives</h2>
+<p>By the end of Class 1, students will be able to:</p>
+<ul class="objlist">
+<li class="objitem"><span class="objnum">1</span><div>Explain the purpose of project initiation and where it fits within the PMBOK process groups and the construction project life cycle.</div></li>
+<li class="objitem"><span class="objnum">2</span><div>Identify the required elements of a project charter and explain why the charter authorizes project start.</div></li>
+<li class="objitem"><span class="objnum">3</span><div>Distinguish a project charter from a project management plan (PMP) in purpose, length, audience, and update frequency.</div></li>
+<li class="objitem"><span class="objnum">4</span><div>Describe the core subsidiary plans of a construction PMP: scope, schedule, cost, quality, resources, communications, risk, and procurement.</div></li>
+<li class="objitem"><span class="objnum">5</span><div>Apply the PMI Code of Ethics and Professional Conduct to a chartering scenario involving pressure to overstate certainty.</div></li>
+<li class="objitem"><span class="objnum">6</span><div>Evaluate how weak project setup decisions propagate into downstream cost, schedule, and risk exposure.</div></li>
+</ul>
+<div class="inote"><div class="lbl">📋 Bloom's Alignment</div>Objectives 1–3: Remember/Understand. Objective 4: Apply. Objective 5: Evaluate (ethics reasoning). Objective 6: Analyze/Evaluate. Push hardest on Objectives 5–6 during wrap-up — they separate a PM who fills out templates from one who understands why the templates exist.</div>
+<h3>Career Relevance</h3>
+<div class="card">
+<h4>Why Every Construction PM Needs This Class</h4>
+<ul>
+<li><strong>Contract Kickoff:</strong> The charter is often the first internal document a newly-assigned PM produces after contract award — it's a professional credibility marker.</li>
+<li><strong>Authority Disputes:</strong> Unclear PM authority thresholds are a leading cause of change-order friction between field staff and ownership.</li>
+<li><strong>Onboarding New Team Members:</strong> A clear PMP lets superintendents, project engineers, and subs get oriented fast instead of learning project rules by trial and error.</li>
+<li><strong>Claims &amp; Disputes:</strong> When projects end up in dispute, the charter and PMP are often the first documents attorneys request — they establish what "success" was agreed to look like.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-notes">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Lecture Notes — Initiation, Setup &amp; the PMP</h2>
+<h3>1.1 The Project Life Cycle &amp; Process Groups</h3>
+<p>Every project — construction or otherwise — moves through five PMBOK <strong>process groups</strong>: Initiating, Planning, Executing, Monitoring &amp; Controlling, and Closing. Monitoring &amp; Controlling runs concurrently across the others rather than as a discrete phase.</p>
+<div class="card">
+<h4>Construction-Specific Overlay</h4>
+<table>
+<thead><tr><th>PMBOK Process Group</th><th>Construction Phase</th></tr></thead>
+<tbody>
+<tr><td>Initiating</td><td>Contract award, chartering, PM assignment</td></tr>
+<tr><td>Planning</td><td>Preconstruction, PMP development, subcontractor buyout</td></tr>
+<tr><td>Executing</td><td>Mobilization &amp; construction</td></tr>
+<tr><td>Monitoring &amp; Controlling</td><td>Ongoing throughout — cost/schedule tracking, change management, QA/QC</td></tr>
+<tr><td>Closing</td><td>Substantial completion, punch list, closeout, final payment</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout cb"><strong>🔑 Key Concept</strong>Initiation is short but consequential — it sets the authority, objectives, and success criteria that every later process group is measured against.</div>
+<h3>1.2 Project Initiation &amp; the Project Charter</h3>
+<p>A <strong>project charter</strong> is the document that formally authorizes a project's existence and gives the project manager authority to apply organizational resources to project activities.</p>
+<div class="card">
+<h4>Required Charter Elements</h4>
+<ol>
+<li><strong>Purpose &amp; business justification</strong> — why this project exists, in 2–3 sentences.</li>
+<li><strong>Measurable success criteria</strong> — cost, schedule, and quality targets that can be checked against later.</li>
+<li><strong>PM name &amp; authority level</strong> — explicit budget and change-approval thresholds.</li>
+<li><strong>Stakeholder list</strong> — high-level, not the detailed analysis that comes later (Class 2).</li>
+<li><strong>Summary milestone schedule</strong> — start, key phases, substantial completion.</li>
+<li><strong>Summary budget</strong> — GMP or contract value and major cost categories.</li>
+<li><strong>High-level risks &amp; assumptions</strong> — site conditions, delivery method, known constraints.</li>
+<li><strong>Sponsor &amp; PM signatures</strong> — the act of formal authorization.</li>
+</ol>
+</div>
+<div class="inote"><div class="lbl">📋 Case Example — Use Throughout the Semester</div>KSU Applied Technology &amp; Construction Innovation Center: $28.5M GMP, 72,000 SF, 3 stories, CM at Risk (AIA A133), 16-month duration, occupied urban campus. This recurring case resurfaces in Class 2 (stakeholders), Class 3 (delivery methods &amp; procurement), and later scheduling/cost classes — keep the same numbers so students build cumulative familiarity.</div>
+<div class="card">
+<h4>Charter Authority Table — Who Decides What</h4>
+<div class="ot"><table>
+<thead><tr><th>Decision Type</th><th>Typical Authority</th><th>Example Threshold</th></tr></thead>
+<tbody>
+<tr><td>Minor budget reallocation within GMP</td><td>Project Manager</td><td>Up to $25,000–$50,000 per change</td></tr>
+<tr><td>Schedule adjustments not affecting milestones</td><td>Project Manager</td><td>±2 weeks on non-critical activities</td></tr>
+<tr><td>Scope changes affecting the GMP</td><td>Owner / Sponsor</td><td>Any change requiring a formal change order</td></tr>
+<tr><td>Substantial completion date changes</td><td>Owner / Sponsor</td><td>Any milestone shift</td></tr>
+</tbody>
+</table></div>
+</div>
+<h3>1.3 Project Setup Essentials</h3>
+<div class="grid2">
+<div class="card">
+<h4>Team Mobilization</h4>
+<p>Core CM at Risk field team typically includes: Project Manager, Superintendent, Project Engineer(s), Estimator/Buyout Lead, Safety Manager, and Document Control Coordinator on larger projects.</p>
+</div>
+<div class="card">
+<h4>Kickoff Meeting Agenda</h4>
+<ul>
+<li>Introductions &amp; roles</li>
+<li>Charter review &amp; success criteria</li>
+<li>Contract/GMP review</li>
+<li>Milestone schedule overview</li>
+<li>Communication protocols &amp; submittal process</li>
+<li>Site logistics &amp; safety orientation</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h4>Document Control Systems</h4>
+<p>Set up before mobilization, not after the first RFI arrives: submittal log, RFI log, change order log, meeting minutes numbering convention, and a shared drawing/document repository with version control.</p>
+</div>
+<div class="callout cr"><strong>⚠ Common Setup Failure</strong>Teams that delay document control setup until "things settle down" lose the ability to reconstruct decision history when disputes arise later — by then it's too late to retrofit a numbering convention onto three months of untracked emails.</div>
+<h3>1.4 The Project Management Plan (PMP)</h3>
+<p>The <strong>project management plan (PMP)</strong> describes how the project will be executed, monitored, controlled, and closed. It aggregates subsidiary management plans developed during the Planning process group.</p>
+<div class="ot"><table>
+<thead><tr><th>Subsidiary Plan</th><th>Construction Focus</th></tr></thead>
+<tbody>
+<tr><td>Scope Management Plan</td><td>WBS, scope statement, change control process</td></tr>
+<tr><td>Schedule Management Plan</td><td>CPM schedule, update frequency, float policy</td></tr>
+<tr><td>Cost Management Plan</td><td>Budget tracking, cost codes, forecasting method</td></tr>
+<tr><td>Quality Management Plan</td><td>QA/QC procedures, inspection &amp; test plans</td></tr>
+<tr><td>Resource Management Plan</td><td>Staffing plan, subcontractor management</td></tr>
+<tr><td>Communications Management Plan</td><td>Meeting cadence, reporting formats, escalation paths</td></tr>
+<tr><td>Risk Management Plan</td><td>Risk register, response strategies, contingency</td></tr>
+<tr><td>Procurement Management Plan</td><td>Subcontractor buyout strategy, bid packages</td></tr>
+</tbody>
+</table></div>
+<h3>1.5 Charter vs. PMP — Quick Comparison</h3>
+<div class="ot"><table>
+<thead><tr><th>Feature</th><th>Project Charter</th><th>Project Management Plan</th></tr></thead>
+<tbody>
+<tr><td>Purpose</td><td>Authorizes the project</td><td>Operationalizes the project</td></tr>
+<tr><td>Length</td><td>1–2 pages</td><td>Dozens of pages across subsidiary plans</td></tr>
+<tr><td>Audience</td><td>Sponsor, executives, PM</td><td>Full project team</td></tr>
+<tr><td>Timing</td><td>Signed once, at initiation</td><td>Developed in planning, refined throughout</td></tr>
+<tr><td>Update frequency</td><td>Rarely amended</td><td>Living document, updated as needed</td></tr>
+<tr><td>Authority</td><td>Grants PM authority</td><td>Describes how that authority is exercised</td></tr>
+</tbody>
+</table></div>
+<div class="inote"><div class="lbl">📋 Talking Point</div>"The charter is a promise; the PMP is the plan for keeping it." Ask students: if the charter says substantial completion by April 2028, which subsidiary plan is responsible for actually protecting that date? (Schedule Management Plan — ties directly into Class 8's CPM work.)</div>
+</div>
+</div>
+<div class="tab-content" id="tab-terms">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Key Terms — Class 1</h2>
+<div class="inote"><div class="lbl">📋 Note</div>Student edition has definitions blank for note-taking. These are the complete definitions for your reference.</div>
+<div class="grid2">
+<div class="card"><h4>Project Charter</h4><p>The document that formally authorizes a project's existence and gives the project manager authority to apply organizational resources to project activities.</p></div><div class="card"><h4>Project Management Plan (PMP)</h4><p>The document that describes how a project will be executed, monitored, controlled, and closed; aggregates all subsidiary management plans.</p></div><div class="card"><h4>Project Life Cycle</h4><p>The series of phases a project passes through from initiation to closure.</p></div><div class="card"><h4>Process Groups</h4><p>The five PMBOK categories of project management activity: Initiating, Planning, Executing, Monitoring &amp; Controlling, Closing.</p></div><div class="card"><h4>Sponsor</h4><p>The individual or group providing resources and support for the project and accountable for enabling success — typically the owner's representative.</p></div><div class="card"><h4>GMP (Guaranteed Maximum Price)</h4><p>The maximum price a CM at Risk contractor guarantees for a defined scope; savings below GMP are typically shared per the contract.</p></div><div class="card"><h4>CM at Risk</h4><p>A delivery method where the construction manager holds the risk of delivering the project within the GMP, acting as general contractor during construction.</p></div><div class="card"><h4>Kickoff Meeting</h4><p>The first formal meeting between owner, design team, and CM to align on charter contents, communication protocols, and logistics.</p></div><div class="card"><h4>Document Control</h4><p>The system of logs, numbering conventions, and repositories used to track submittals, RFIs, change orders, and correspondence.</p></div><div class="card"><h4>Baseline</h4><p>The approved version of a plan (scope, schedule, or cost) used as a basis for comparison against actual performance.</p></div><div class="card"><h4>Subsidiary Plan</h4><p>One of the component plans (scope, schedule, cost, quality, resources, communications, risk, procurement) that together make up the PMP.</p></div><div class="card"><h4>PM Authority Threshold</h4><p>The explicit dollar or decision-scope limit within which a project manager may act without escalating to the sponsor or owner.</p></div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-activities">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>In-Class Activities</h2>
+<div class="actbox">
+<h3>Activity #1 — "Charter or PMP?" Sorting Challenge</h3>
+<div class="actmeta">
+<div class="amitem">Format: <span>Small groups (3–4 students)</span></div>
+<div class="amitem">Time: <span>12 minutes + debrief</span></div>
+<div class="amitem">Ordered: <span>Straightforward → Debatable</span></div>
+</div>
+<p>Groups sort each statement into Charter, PMP, Both, or Neither, then justify their choice.</p>
+</div>
+<div class="inote"><div class="lbl">📋 Debrief Guide</div>Project statements one at a time; allow 30–45 seconds of group discussion before revealing the answer. Items 1–3 are straightforward; items 4–5 are deliberately ambiguous and deserve the most debrief time — they show that the charter's stakeholder list is high-level while the PMP's is detailed, and that document-control conventions belong to the Communications Management Plan even though they feel administrative.</div>
+<div class="grid2">
+<div class="qq"><div class="qnum">Item 1</div><div class="qtext">"Project success will be measured by substantial completion by April 2028 and final cost at or below the $28.5M GMP."</div><div class="ans"><strong>Charter.</strong> Measurable success criteria belong in the charter.</div></div>
+<div class="qq"><div class="qnum">Item 2</div><div class="qtext">"Detailed CPM schedule with 400 activities and logic ties."</div><div class="ans"><strong>PMP.</strong> Schedule Management Plan detail — far beyond charter scope.</div></div>
+<div class="qq"><div class="qnum">Item 3</div><div class="qtext">"PM Sarah Chen has authority to approve change orders up to $50,000 without Board approval."</div><div class="ans"><strong>Charter.</strong> PM authority threshold is core charter content.</div></div>
+<div class="qq"><div class="qnum">Item 4</div><div class="qtext">"Submittal log format, numbering convention, and 10-day owner review turnaround."</div><div class="ans"><strong>PMP.</strong> Communications Management Plan / document control — administrative detail belongs downstream of the charter.</div></div>
+<div class="qq"><div class="qnum">Item 5</div><div class="qtext">"List of all identified stakeholders and their level of influence."</div><div class="ans"><strong>Both.</strong> The charter includes a high-level stakeholder list; the detailed influence analysis is a PMP/Stakeholder Engagement Plan artifact (preview of Class 2).</div></div>
+<div class="qq"><div class="qnum">Item 6</div><div class="qtext">"One paragraph explaining why KSU is building this facility."</div><div class="ans"><strong>Charter.</strong> Purpose and business justification.</div></div>
+<div class="qq"><div class="qnum">Item 7</div><div class="qtext">"Weekly OAC meeting schedule and agenda template."</div><div class="ans"><strong>PMP.</strong> Communications Management Plan.</div></div>
+<div class="qq"><div class="qnum">Item 8</div><div class="qtext">"Signature blocks for the owner's VP of Facilities and the CM's project executive."</div><div class="ans"><strong>Charter.</strong> The signatures are the act of formal authorization.</div></div>
+</div>
+<div class="actbox" style="margin-top:32px;">
+<h3>Activity #2 — "Draft Your Kickoff Agenda"</h3>
+<div class="actmeta">
+<div class="amitem">Format: <span>Pairs</span></div>
+<div class="amitem">Time: <span>8 minutes + 4 min debrief</span></div>
+</div>
+<p>Using the KSU case, draft a 6-item kickoff meeting agenda for the first OAC (owner-architect-contractor) meeting.</p>
+</div>
+<div class="card">
+<h4>Scenario</h4>
+<p>Dr. Patricia Moore, KSU's Director of Capital Projects, has asked you to run the kickoff meeting Thursday morning. She wants the design team, your superintendent, and the estimator all aligned before anyone touches a shovel.</p>
+<ol>
+<li>What six items belong on the agenda, and in what order?</li>
+<li>Why does that order matter?</li>
+</ol>
+</div>
+<div class="ans"><strong>Answer Key:</strong><br/>
+<strong>1.</strong> Introductions &amp; roles → Review of charter &amp; success criteria → Contract/GMP review → Milestone schedule overview → Communication protocols &amp; submittal process → Site logistics, safety orientation &amp; next steps.<br/><br/>
+<strong>2.</strong> The agenda should move from alignment (who's here, what we agreed to) to operational detail (how we'll actually run the job) — not the reverse. Starting with logistics before the team agrees on the charter's success criteria risks solving the wrong problems well.
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-diagrams">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Visual Aids &amp; Diagrams</h2>
+<h3>Diagram 1: Process Groups &amp; the Construction Life Cycle</h3>
+<div class="dw">
+<svg font-family="Inter,sans-serif" viewbox="0 0 880 278" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f7f8fc" height="278" rx="12" width="880"></rect>
+<text fill="#1a2744" font-size="13" font-weight="700" text-anchor="middle" x="440" y="26">PMBOK Process Groups Mapped to a CM at Risk Project</text>
+<rect fill="#1a2744" height="70" rx="8" width="150" x="20" y="60"></rect>
+<text fill="#f0d080" font-size="12" font-weight="700" text-anchor="middle" x="95" y="88">Initiating</text>
+<text fill="#fff" font-size="10" text-anchor="middle" x="95" y="106">Contract award,</text>
+<text fill="#fff" font-size="10" text-anchor="middle" x="95" y="119">chartering</text>
+<line marker-end="url(#arr1)" stroke="#c9a84c" stroke-width="2" x1="170" x2="198" y1="95" y2="95"></line>
+<rect fill="#243260" height="70" rx="8" width="150" x="200" y="60"></rect>
+<text fill="#f0d080" font-size="12" font-weight="700" text-anchor="middle" x="275" y="88">Planning</text>
+<text fill="#fff" font-size="10" text-anchor="middle" x="275" y="106">Preconstruction,</text>
+<text fill="#fff" font-size="10" text-anchor="middle" x="275" y="119">PMP development</text>
+<line marker-end="url(#arr1)" stroke="#c9a84c" stroke-width="2" x1="350" x2="378" y1="95" y2="95"></line>
+<rect fill="#1a4080" height="70" rx="8" width="150" x="380" y="60"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="455" y="88">Executing</text>
+<text fill="#cfe0f7" font-size="10" text-anchor="middle" x="455" y="106">Mobilization &amp;</text>
+<text fill="#cfe0f7" font-size="10" text-anchor="middle" x="455" y="119">construction</text>
+<line marker-end="url(#arr1)" stroke="#c9a84c" stroke-width="2" x1="530" x2="558" y1="95" y2="95"></line>
+<rect fill="#1a6e3c" height="70" rx="8" width="160" x="560" y="60"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="640" y="88">Closing</text>
+<text fill="#d7f2e0" font-size="10" text-anchor="middle" x="640" y="106">Substantial completion,</text>
+<text fill="#d7f2e0" font-size="10" text-anchor="middle" x="640" y="119">closeout</text>
+<rect fill="#fdf6e3" height="86" rx="8" stroke="#c9a84c" stroke-width="1.5" width="480" x="200" y="170"></rect>
+<text fill="#7b4f00" font-size="12" font-weight="700" text-anchor="middle" x="440" y="193">Monitoring &amp; Controlling</text>
+<text fill="#7b4f00" font-size="10" text-anchor="middle" x="440" y="212">Runs continuously beneath Planning, Executing, and Closing —</text>
+<text fill="#7b4f00" font-size="10" text-anchor="middle" x="440" y="226">cost/schedule tracking, change control, QA/QC</text>
+<line stroke="#c9a84c" stroke-dasharray="4,3" stroke-width="1.5" x1="275" x2="275" y1="130" y2="168"></line>
+<line stroke="#c9a84c" stroke-dasharray="4,3" stroke-width="1.5" x1="455" x2="455" y1="130" y2="168"></line>
+<line stroke="#c9a84c" stroke-dasharray="4,3" stroke-width="1.5" x1="640" x2="640" y1="130" y2="168"></line>
+<defs><marker id="arr1" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><polygon fill="#c9a84c" points="0 0,9 3.5,0 7"></polygon></marker></defs>
+</svg>
+</div>
+<h3>Diagram 2: Charter → PMP → Execution</h3>
+<div class="dw">
+<svg font-family="Inter,sans-serif" viewbox="0 0 880 200" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f7f8fc" height="200" rx="12" width="880"></rect>
+<text fill="#1a2744" font-size="13" font-weight="700" text-anchor="middle" x="440" y="26">From Authorization to Action</text>
+<rect fill="#1a2744" height="80" rx="8" width="200" x="20" y="56"></rect>
+<text fill="#f0d080" font-size="12" font-weight="700" text-anchor="middle" x="120" y="86">Project Charter</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="120" y="104">Signed once. Authorizes</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="120" y="116">the PM &amp; sets success criteria.</text>
+<line marker-end="url(#arr2)" stroke="#c9a84c" stroke-width="2" x1="220" x2="256" y1="96" y2="96"></line>
+<rect fill="#1a4080" height="80" rx="8" width="220" x="258" y="56"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="368" y="86">Project Management Plan</text>
+<text fill="#cfe0f7" font-size="9" text-anchor="middle" x="368" y="104">Living document. 8 subsidiary</text>
+<text fill="#cfe0f7" font-size="9" text-anchor="middle" x="368" y="116">plans operationalize the charter.</text>
+<line marker-end="url(#arr2)" stroke="#c9a84c" stroke-width="2" x1="478" x2="514" y1="96" y2="96"></line>
+<rect fill="#1a6e3c" height="80" rx="8" width="200" x="516" y="56"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="616" y="86">Execution &amp; Control</text>
+<text fill="#d7f2e0" font-size="9" text-anchor="middle" x="616" y="104">Team acts within PM</text>
+<text fill="#d7f2e0" font-size="9" text-anchor="middle" x="616" y="116">authority, tracked against baselines.</text>
+<rect fill="#fdf6e3" height="80" rx="8" stroke="#c9a84c" stroke-width="1.5" width="124" x="736" y="56"></rect>
+<text fill="#7b4f00" font-size="10" font-weight="700" text-anchor="middle" x="798" y="90">Feedback loop:</text>
+<text fill="#7b4f00" font-size="9" text-anchor="middle" x="798" y="104">performance data</text>
+<text fill="#7b4f00" font-size="9" text-anchor="middle" x="798" y="116">refines the PMP</text>
+<path d="M 798 136 Q 798 170 616 170 Q 400 170 368 136" fill="none" marker-end="url(#arr2)" stroke="#c9a84c" stroke-dasharray="4,3" stroke-width="1.5"></path>
+<text fill="#5a6080" font-size="10" text-anchor="middle" x="440" y="185">The charter rarely changes; the PMP is refined continuously as the project learns.</text>
+<defs><marker id="arr2" markerheight="7" markerwidth="9" orient="auto" refx="8" refy="3.5"><polygon fill="#c9a84c" points="0 0,9 3.5,0 7"></polygon></marker></defs>
+</svg>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-ethics">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Ethics, Leadership &amp; Professional Decision-Making</h2>
+<p>Chartering is where a construction PM's professional judgment is tested first — before any concrete is poured, the words written into the charter set expectations that real money and real trust will later be measured against.</p>
+<h3>The PMI Code of Ethics and Professional Conduct</h3>
+<div class="grid2">
+<div class="card"><h4>Responsibility</h4><p>Owning the accuracy of the success criteria and authority thresholds you write into the charter — not overpromising to please a sponsor eager for good news.</p></div>
+<div class="card"><h4>Respect</h4><p>Treating every team member's setup input — superintendent, estimator, safety manager — as legitimate, even when it slows down a fast kickoff timeline.</p></div>
+<div class="card"><h4>Fairness</h4><p>Making sure the charter's authority thresholds and stakeholder list aren't quietly shaped to benefit one party's convenience over the project's actual needs.</p></div>
+<div class="card"><h4>Honesty</h4><p>Communicating real risks and assumptions in the charter — not softening them to make a project look more certain than it is.</p></div>
+</div>
+<div class="callout cb"><strong>🔑 Source</strong>Project Management Institute, <em>Code of Ethics and Professional Conduct</em>. These four values apply directly to chartering: a PM who signs off on a completion date they privately doubt violates Honesty even if the sponsor requested it.</div>
+<h3>Scenario: "The Optimistic Charter"</h3>
+<div class="card">
+<p>Dr. Patricia Moore wants the charter to state substantial completion by <strong>February 2028</strong> — two months earlier than your own schedule assessment supports — because the earlier date "will look better to the Board of Regents." She's not asking you to lie about the GMP or scope, just to write down a more aggressive date than you believe is achievable.</p>
+<ol>
+<li>Is it dishonest to write a date you privately doubt, if the owner directed it?</li>
+<li>How does an inflated charter set the whole project up for conflict later?</li>
+<li>What is the PM's professional obligation when asked to write something they believe is misleading?</li>
+</ol>
+</div>
+<div class="inote"><div class="lbl">📋 Discussion Guide</div>Q1: Push past "I was just following instructions" — PMI's Honesty value obligates the PM to communicate the truth as they understand it, not just transcribe what's requested. Q2: Look for answers connecting an unrealistic charter date to later schedule disputes, forced acceleration costs, or a credibility hit when the date inevitably slips. Q3: The professional answer is to state the concern directly and in writing (e.g., "I can include February 2028 if you'd like, but my assessment supports April 2028 based on X, Y, Z"), giving the sponsor an informed choice rather than silently complying or silently refusing.</div>
+<h3>Leading Through Setup Ambiguity</h3>
+<p>Early in a project, almost nothing is settled — the team is new, the document conventions don't exist yet, and everyone is watching how the PM handles the first few ambiguous decisions. A PM who models document discipline and honest communication in Week 1 sets the team's norms for the next sixteen months; a PM who cuts corners at kickoff normalizes cutting corners later.</p>
+<h3>A Simple Professional Decision-Making Framework</h3>
+<div class="card">
+<h4>Four Steps</h4>
+<ol>
+<li><strong>Identify the issue</strong> — name the conflict or dilemma precisely, not vaguely</li>
+<li><strong>Consider stakeholders and PMI's four values</strong> — who is affected, and which value is most at stake?</li>
+<li><strong>Evaluate alternatives</strong> — what are the realistic options, including disclosure and pushback?</li>
+<li><strong>Act and document</strong> — take the action and create a contemporaneous record of why</li>
+</ol>
+</div>
+<h3>Discussion Questions</h3>
+<ol>
+<li>Where is the line between "confident leadership" and "overpromising" when writing charter success criteria?</li>
+<li>How would you document your schedule concern in writing so it protects both you and the owner later?</li>
+<li>If Dr. Moore insisted on the February date anyway, what would you do next?</li>
+</ol>
+<div class="inote"><div class="lbl">📋 Discussion Guide</div>Q1: Confident leadership commits to criteria the PM has actually assessed as achievable; overpromising commits to criteria chosen for how they sound. Q2: Look for answers mentioning a dated email or meeting minute stating the assessment and the recommendation, distinct from simply complying. Q3: Acceptable answers include escalating the concern once more in writing, offering a contingency-based alternative (e.g., "achievable if X happens by Y date"), or ultimately complying while preserving a paper trail — not simply capitulating without documentation.</div>
+</div>
+</div>
+<div class="tab-content" id="tab-game">
+<div class="pw">
+<h2>Reinforce It: Charter vs. PMP Showdown</h2>
+<p>Play through 10 rounds covering the charter, project setup, the PMP, and chartering ethics — the same concepts from this lesson, in scenario form. Your score resets each time you replay.</p>
+<div class="game-wrap">
+<div class="game-head">
+<h4>🎮 Charter vs. PMP Showdown</h4>
+<div class="game-score" id="game-score">Score: 0</div>
+</div>
+<div class="game-body" id="game-active-body">
+<!-- populated by JS -->
+</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-homework">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Homework — Class 1</h2>
+<p><strong>Due:</strong> Before Class 2 | <strong>Total Points:</strong> 50</p>
+<div class="inote"><div class="lbl">📋 Grading Note</div>Problems 1–2: recall + application. Problem 3: high-value scenario requiring synthesis across the charter/PMP distinction. Problem 4: professional reflection building judgment. Full answer keys included below each problem.</div>
+<div class="hwp">
+<div class="hwnum">Problem 1 — Charter Element Matching (15 pts, 3 pts each)</div>
+<p>Match each description to the correct charter element: Purpose/Justification, Success Criteria, Authority Level, Milestone Summary, Stakeholder List.</p>
+<ol type="a">
+<li>"Substantial completion is targeted for April 2028."</li>
+<li>"KSU is building this facility to consolidate three outdated labs into one accredited teaching space."</li>
+<li>"The PM may approve change orders up to $50,000 without Board sign-off."</li>
+<li>"Dr. Patricia Moore (KSU), the design architect, and the CM's project executive are named participants."</li>
+<li>"Final cost must not exceed the $28.5M GMP."</li>
+</ol>
+<div class="ans"><strong>Answer Key:</strong><br/>
+a. Milestone Summary. b. Purpose/Justification. c. Authority Level. d. Stakeholder List. e. Success Criteria.</div>
+</div>
+<div class="hwp">
+<div class="hwnum">Problem 2 — True/False with Justification (10 pts, 2 pts each)</div>
+<ol type="a">
+<li>The project charter and the PMP are updated on the same schedule throughout the project.</li>
+<li>A project charter should be short enough to read in about five minutes.</li>
+<li>The Schedule Management Plan is part of the project charter, not the PMP.</li>
+<li>Document control systems should be set up before mobilization begins.</li>
+<li>The charter's stakeholder list is expected to be as detailed as the PMP's stakeholder engagement plan.</li>
+</ol>
+<div class="ans"><strong>Answer Key:</strong><br/>
+a. <strong>FALSE</strong> — the charter is signed once at initiation; the PMP is a living document updated throughout planning and execution.<br/>
+b. <strong>TRUE</strong> — 1–2 pages, readable in minutes; anything longer is PMP content.<br/>
+c. <strong>FALSE</strong> — the detailed CPM schedule lives in the Schedule Management Plan within the PMP.<br/>
+d. <strong>TRUE</strong> — setting up logs and conventions after work starts means losing the ability to reconstruct early decisions.<br/>
+e. <strong>FALSE</strong> — the charter list is high-level; detailed influence/interest analysis is a PMP/stakeholder engagement artifact (Class 2 topic).</div>
+</div>
+<div class="hwp">
+<div class="hwnum">Problem 3 — Case Study (20 pts)</div>
+<p>You are the newly-assigned PM for a $12M student housing renovation project (200 beds, occupied-during-construction phasing, 10-month duration, CM at Risk). Draft:</p>
+<ol type="a">
+<li>Three measurable success criteria for the project charter.</li>
+<li>A one-sentence PM authority statement with a specific dollar threshold.</li>
+<li>The three subsidiary PMP plans you consider most critical for this project, with one sentence justifying each.</li>
+</ol>
+<div class="ans"><strong>Answer Key (sample — accept reasonable variation):</strong><br/>
+a. Substantial completion within 10 months; final cost at or below $12M GMP; zero life-safety incidents affecting occupied residents during construction.<br/>
+b. "The PM may approve change orders up to $30,000 per occurrence without owner Board approval."<br/>
+c. <em>Risk Management Plan</em> — occupied-during-construction phasing creates elevated life-safety and disruption risk. <em>Communications Management Plan</em> — resident notification and coordination is critical given active occupancy. <em>Schedule Management Plan</em> — phased/sequenced work around occupied units requires tight logic and float management. Credit any three well-justified plans tied to the case's actual constraints.</div>
+</div>
+<div class="hwp">
+<div class="hwnum">Problem 4 — Professional Reflection (5 pts)</div>
+<p>In 150–200 words, describe a real or plausible scenario where a project started without a clear charter or PMP, and problems surfaced downstream. What went wrong? What were the consequences? How could a PM have caught it earlier?</p>
+<div class="ans"><strong>Answer Key:</strong><br/>
+<strong>Grading Rubric:</strong> Clear scenario (1 pt) + correct identification of the charter/PMP gap (1 pt) + specific consequences discussed (1 pt) + practical PM lesson drawn (1 pt) + professional writing quality (1 pt). Accept any plausible scenario. Look for evidence the student understands that initiation decisions have real downstream budget/schedule consequences, and that a PM can catch these early.</div>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-resources">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Resources &amp; References</h2>
+<h3>Primary References — Class 1</h3>
+<div class="card">
+<ul>
+<li><strong>PMI, <em>A Guide to the Project Management Body of Knowledge (PMBOK® Guide)</em></strong> — Process groups and project charter guidance</li>
+<li><strong>PMI, <em>Construction Extension to the PMBOK Guide</em></strong> — Construction-specific application of PMI standards</li>
+<li><strong>PMI, <em>Code of Ethics and Professional Conduct</em></strong> — Responsibility, Respect, Fairness, Honesty</li>
+<li><strong>AIA A133</strong> — Standard CM at Risk agreement form (GMP structure, authority references)</li>
+<li><strong>KSU Capital Projects Standards</strong> — Institutional owner requirements referenced in the case example</li>
+</ul>
+</div>
+<h3>Project Setup &amp; Charter Checklist</h3>
+<div class="callout cg"><strong>📥 Career Tool</strong>Print and use this checklist on any project at initiation. It documents due diligence on charter and setup decisions — useful on the job, not just in class.</div>
+<div class="card">
+<h4>✅ CM Project Setup &amp; Charter Checklist</h4>
+<div class="chki"><div class="chkb"></div><div><strong>Step 1:</strong> Confirm delivery method and contract terms (GMP, milestones, key exhibits) before drafting anything.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 2:</strong> Draft the charter with the owner/sponsor — confirm purpose, success criteria, and authority thresholds together, not in isolation.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 3:</strong> Define PM authority thresholds explicitly, in dollars, for both budget and schedule decisions.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 4:</strong> Identify high-level stakeholders and confirm the charter's stakeholder list before kickoff.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 5:</strong> Set up document control systems (submittal log, RFI log, change order log, numbering convention) before mobilization.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 6:</strong> Schedule and run the kickoff meeting using an agenda that moves from alignment to operational detail.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 7:</strong> Outline the PMP's subsidiary plans and assign an owner for each (scope, schedule, cost, quality, resources, comms, risk, procurement).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Step 8:</strong> Obtain formal charter sign-off from sponsor and PM before treating the project as authorized.</div></div>
+</div>
+<h3>Online Resources</h3>
+<div class="card">
+<ul>
+<li><a href="https://www.pmi.org" target="_blank">Project Management Institute (PMI)</a> — PMBOK® Guide, Code of Ethics, certifications</li>
+<li><a href="https://www.construction-institute.org" target="_blank">Construction Industry Institute (CII)</a> — Best-practice research on project setup and front-end planning</li>
+<li><a href="https://www.agc.org" target="_blank">AGC of America</a> — Project manager training and resources</li>
+<li><a href="https://www.aiacontracts.org" target="_blank">AIA Contract Documents</a> — A133 CM at Risk agreement family</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tab-content" id="tab-deliverables">
+<div class="pw"><div class="print-btn-row"><button class="print-btn" onclick="window.print()">&#128424; Print Page</button></div>
+<h2>Class 1 Deliverables Checklist</h2>
+<p><strong>Due:</strong> Before Class 2 | Use this checklist to confirm everything from this class is complete before you submit.</p>
+<div class="card">
+<h4>✅ What to Complete &amp; Bring Together</h4>
+<div class="chki"><div class="chkb"></div><div><strong>Document Control System outline</strong> — submittal log, RFI log, change order log, and numbering convention, sketched from Lecture Notes §1.3.</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Key Terms</strong> — all 12 terms defined in your own words (Key Terms tab).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Activity #1 answers</strong> — "Charter or PMP?" classification for all 8 items, with justification (Activities tab).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Activity #2 answer</strong> — your kickoff meeting agenda for the KSU case (Activities tab).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Discussion Question answers</strong> — both sets of questions from the Ethics &amp; Leadership tab ("The Optimistic Charter" scenario and the leadership questions).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Homework Problems 1–4</strong> — completed with work shown (Homework tab).</div></div>
+<div class="chki"><div class="chkb"></div><div><strong>Project Setup &amp; Charter Checklist</strong> — the 8-step checklist completed, either from the Resources tab or the standalone PDF.</div></div>
+</div>
+<div class="callout cg"><strong>📥 Tip</strong>Keep all seven items together in one document or folder before submitting — it's much easier to grade (and to reuse later in the semester) as a single packet than as scattered files.</div>
+</div>
+</div>
+<div class="tab-content" id="tab-submit">
+<div class="pw">
+<h2>Submit Your Deliverables Here</h2>
+<div class="card">
+<h4>How to Submit</h4>
+<ol>
+<li>Confirm every item on the Deliverables tab checklist is complete.</li>
+<li>Combine your work into a single PDF or document where possible.</li>
+<li>Submit through your course's learning management system (D2L/Brightspace) assignment folder for Class 1, as directed by your instructor.</li>
+<li>Use the file naming convention: <em>LastName_CM4560_Class1.pdf</em></li>
+</ol>
+</div>
+<div class="callout cb"><strong>🔑 Questions?</strong>If you're unsure whether something counts as "complete," ask before the due date rather than guessing — this mirrors how you'll want to handle ambiguous scope questions with a real owner or supervisor.</div>
+</div>
+</div>
+<div class="page-footer">
+<strong>CM 4560: Construction Project Management — Week 1 · Class 1: Project Initiation, Setup &amp; the PMP</strong>  ·  Kennesaw State University  ·  Fall 2026<br/>⚠ Contains Answer Keys &amp; Teaching Notes — Not for Student Distribution
+</div>
+<script>
+
+function showTab(id){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelectorAll('.stab').forEach(b=>{
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+id+"'")){
+      b.classList.add('active');
+    }
+  });
+  window.scrollTo({top:document.querySelector('.section-tabs').offsetTop-16,behavior:'smooth'});
+}
+
+
+const gameRounds = [
+  {q:"A newly-assigned PM has a signed GMP contract but no charter yet. What should happen before any CPM scheduling work begins?",
+   opts:["Nothing — the contract already authorizes the schedule","The charter should be drafted and agreed with the sponsor first","The superintendent should set logistics first","The architect should approve the schedule first"], correct:1,
+   fb:"The charter establishes agreed success criteria and authority before downstream planning — schedules built without it have no anchor if scope or priorities are later disputed."},
+  {q:"Which of these belongs in the project charter rather than the PMP?",
+   opts:["Detailed 400-activity CPM schedule","Submittal log numbering convention","PM's authority to approve changes up to $50,000","Risk register with probability and impact ratings"], correct:2,
+   fb:"Explicit PM authority thresholds are core charter content — the other three are subsidiary-plan detail that lives in the PMP."},
+  {q:"How often should the project charter be updated after it's signed?",
+   opts:["Weekly, alongside the schedule","Rarely — it's signed once at initiation","Daily, by the document control coordinator","Every time a change order is issued"], correct:1,
+   fb:"The charter is a one-time authorization document. The PMP is the living document that gets updated as the project learns."},
+  {q:"A PM is asked to write an aggressive completion date into the charter that they privately believe is unrealistic. Per PMI's Code of Ethics, what should they do first?",
+   opts:["Write the date requested without comment","State their concern and the basis for it, in writing, before finalizing the charter","Refuse to draft the charter at all","Quietly plan to miss the date without saying anything now"], correct:1,
+   fb:"PMI's Honesty value calls for communicating the truth as the PM understands it — documenting the concern gives the sponsor an informed choice rather than silent compliance or silent refusal."},
+  {q:"Which subsidiary plan is primarily responsible for protecting a milestone date stated in the charter?",
+   opts:["Procurement Management Plan","Schedule Management Plan","Quality Management Plan","Communications Management Plan"], correct:1,
+   fb:"The Schedule Management Plan governs the CPM schedule, update frequency, and float policy used to protect charter milestone commitments."},
+  {q:"Why should document control systems (submittal log, RFI log, change order log) be set up BEFORE mobilization rather than after?",
+   opts:["It's required by OSHA","Retrofitting a numbering convention onto untracked early records is effectively impossible","The architect requires it before issuing drawings","It has no real effect on the project"], correct:1,
+   fb:"Once early decisions and correspondence happen without a tracking system, that decision history generally can't be reconstructed later — exactly when disputes need it most."},
+  {q:"What is the main difference in AUDIENCE between the charter and the PMP?",
+   opts:["The charter is for the sponsor/executives/PM; the PMP is for the full project team","Both are written only for the PM","The charter is for subcontractors only","The PMP is only read by the owner's attorney"], correct:0,
+   fb:"The charter's short, executive-level content serves sponsors and leadership; the PMP's operational detail is what the full team actually works from day to day."},
+  {q:"A kickoff meeting agenda should generally move from which sequence to which?",
+   opts:["Operational logistics first, then alignment on goals","Alignment on charter/roles first, then operational logistics","Safety orientation first, then everything else","There's no meaningful order to a kickoff agenda"], correct:1,
+   fb:"Starting with alignment (roles, charter, success criteria) before operational detail (logistics, submittals) ensures the team is solving the right problems, in the right order."},
+  {q:"The charter states the GMP is $28.5M. Where does the DETAILED cost-tracking structure (cost codes, forecasting method) actually live?",
+   opts:["In the charter itself, as an appendix","In the Cost Management Plan, part of the PMP","Nowhere — it's tracked informally","In the safety plan"], correct:1,
+   fb:"The Cost Management Plan (a PMP subsidiary plan) defines cost codes, tracking, and forecasting methodology — the charter only states the top-line budget figure."},
+  {q:"A selection committee member has a personal friendship with a bidding firm's principal during project setup vendor selection. What does PMI's Fairness value call for?",
+   opts:["Nothing, since no money changed hands","Proactive disclosure to the committee before evaluation begins","Waiting to see if anyone asks about it later","Scoring the firm slightly lower to compensate"], correct:1,
+   fb:"PMI's ethical standard calls for proactive disclosure regardless of whether the person believes they can remain objective — the appearance of a conflict alone damages trust in the process."}
+];
+let gIdx = 0, gScore = 0, gAnswered = false;
+
+function gRender(){
+  const r = gameRounds[gIdx];
+  document.getElementById('game-progress-fill').style.width = ((gIdx)/gameRounds.length*100)+'%';
+  document.getElementById('game-round-label').textContent = 'Round ' + (gIdx+1) + ' of ' + gameRounds.length;
+  document.getElementById('game-scenario').textContent = r.q;
+  const optsDiv = document.getElementById('game-opts');
+  optsDiv.innerHTML = '';
+  gAnswered = false;
+  r.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'game-opt';
+    btn.textContent = opt;
+    btn.onclick = () => gAnswer(i);
+    optsDiv.appendChild(btn);
+  });
+  const fb = document.getElementById('game-feedback');
+  fb.className = 'game-feedback';
+  fb.textContent = '';
+  document.getElementById('game-next-btn').classList.remove('show');
+}
+
+function gAnswer(i){
+  if(gAnswered) return;
+  gAnswered = true;
+  const r = gameRounds[gIdx];
+  const opts = document.querySelectorAll('.game-opt');
+  opts.forEach((btn, idx) => {
+    btn.classList.add('locked');
+    if(idx === r.correct) btn.classList.add('correct');
+    else if(idx === i) btn.classList.add('wrong');
+  });
+  const fb = document.getElementById('game-feedback');
+  if(i === r.correct){
+    gScore += 10;
+    fb.className = 'game-feedback show gf-correct';
+    fb.innerHTML = '<strong>Correct (+10 pts).</strong> ' + r.fb;
+  } else {
+    fb.className = 'game-feedback show gf-wrong';
+    fb.innerHTML = '<strong>Not quite.</strong> ' + r.fb;
+  }
+  document.getElementById('game-score').textContent = 'Score: ' + gScore;
+  const nextBtn = document.getElementById('game-next-btn');
+  nextBtn.classList.add('show');
+  nextBtn.textContent = (gIdx === gameRounds.length - 1) ? 'See Final Results' : 'Next Round →';
+}
+
+function gNext(){
+  gIdx++;
+  if(gIdx >= gameRounds.length){
+    gFinal();
+  } else {
+    gRender();
+  }
+}
+
+function gFinal(){
+  document.getElementById('game-progress-fill').style.width = '100%';
+  const body = document.getElementById('game-active-body');
+  const max = gameRounds.length * 10;
+  const pct = Math.round((gScore/max)*100);
+  let tier = 'Keep Studying';
+  if(pct >= 90) tier = 'Chartering Expert';
+  else if(pct >= 75) tier = 'Solid PM Judgment';
+  else if(pct >= 60) tier = 'Getting There';
+  body.innerHTML = '<div class="game-final">' +
+    '<div class="score-big">' + gScore + ' / ' + max + '</div>' +
+    '<div class="tier">' + tier + ' — ' + pct + '%</div>' +
+    '<button class="game-restart" onclick="gStart()">Play Again</button>' +
+    '</div>';
+}
+
+function gStart(){
+  gIdx = 0; gScore = 0;
+  document.getElementById('game-score').textContent = 'Score: 0';
+  const body = document.getElementById('game-active-body');
+  body.innerHTML = '<div class="game-progress"><div class="game-progress-fill" id="game-progress-fill" style="width:0%"></div></div>' +
+    '<div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;" id="game-round-label"></div>' +
+    '<div class="game-scenario" id="game-scenario"></div>' +
+    '<div class="game-opts" id="game-opts"></div>' +
+    '<div class="game-feedback" id="game-feedback"></div>' +
+    '<button class="game-next" id="game-next-btn" onclick="gNext()">Next Round →</button>';
+  gRender();
+}
+document.addEventListener('DOMContentLoaded', gStart);
+
+</script>
+</body>
+</html>
